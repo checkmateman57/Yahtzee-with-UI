@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html>
-
+    <head>
+        <script type="module" src="./script.js"></script>
+    </head>
   <body style="background-image: url(./yahtzee.jpg); height: 1080; width: 1920;">
         <p style="font-size: 72px; color: antiquewhite; text-align: center; margin-top: 0px;">Yahtzee</p>
-        <div style="width: 160px; height: 64px; background-color: rgb(250 235 215 / 0.9); position: absolute; left: 3%; top: 3%;">
+        <div id="RulesOpener" style="width: 160px; height: 64px; background-color: rgb(250 235 215 / 0.9); position: absolute; left: 3%; top: 3%;">
             <p style="font-size: 30px; background-color: rgb(0 0 0 / 0); margin-top: 16px; margin-bottom: 16px; text-align: center;
             cursor: pointer;">
                 How to Play
             </p>
         </div>
-        <div style="width: 160px; height: 64px; background-color: rgba(250, 235, 215, 0.9); position: absolute; right: 3%; top: 3%;">
+        <div id="NewGame" style="width: 160px; height: 64px; background-color: rgba(250, 235, 215, 0.9); position: absolute; right: 3%; top: 3%;">
             <p style="font-size: 30px; background-color: rgb(0 0 0 / 0); margin-top: 16px; margin-bottom: 16px; text-align: center;
             cursor: pointer;">
                 New Game
             </p>
+        </div>
+        <div id="Rules" style="background-color: antiquewhite; width: 640px; height: 480px; position: absolute;
+        top: 200px; left: 640px; border-radius: 16px; overflow: hidden; overflow-y: scroll;">
+            <p style="color: rgb(48 48 48 / 1); font-size: 64px; text-align: center; margin-top: 8px; margin-bottom: 8px;">
+                 <b>Welcome to Yahtzee!</b>
+            </p>
+            <p style="color: rgb(48 48 48 / 1); font-size: 32px; margin-left: 8px;">
+                 <b>Rules:</b> <br>
+                 -You get 3 rolls per turn, and can lock the die's value by clicking on the die. <br>
+                 -You must choose a section to get scored in each turn, even if it results in a 0 <br> <br>
+                 <b>Scoring:</b> <br>
+                 -There are 2 sections: an upper section and a lower section. <br>
+                 -The upper section consists of 1s, 2s, 3s, 4s, 5s, 6s, and is how many dice of that value you have added together. <br>
+                 (Ex. If you have 3 6s, thats 18 points.) <br>
+                 *If your score in the upper section exceeds 63, you get a 35 point bonus* <br>  <br>
+                 -The lower section consists of dice combinations <br>
+                 -3 of a kind and 4 of a kind means you must have 3 or 4 of the same value. All dice of that value are added together. <br>
+                 -Short straight is 4 in a row (30 points), Long straight is 5 in a row (40 points)<br>
+                 -Full House is having 3 dice of the same value, and another 2 dice with a different shared value (25 points)<br>
+                 -Chance is adding up all your dice into one score <br>
+                 -Yahtzee is when all 5 of your dice are the same value (50 points)<br> <br>
+                 -The goal is to get the highest amount of points. Have Fun! <br>
+            </p>
+            <p id="RulesClose" style="color: rgb(48 48 48 / 1); cursor: pointer; font-size: 32px; text-align: center;"><b>Close</b></p>
         </div>
 </body>
 
