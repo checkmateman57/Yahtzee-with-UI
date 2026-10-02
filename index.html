@@ -24,6 +24,10 @@
                  <b>Welcome to Yahtzee!</b>
             </p>
             <p style="color: rgb(48 48 48 / 1); font-size: 32px; margin-left: 8px;">
+                 <b>How To Play:</b> <br>
+                 -Hit the roll button to change the dice values <br>
+                 -If you like your roll, click on dice to lock their value <br>
+                 -You can roll a max of 3 times before choosing how to score, which you can do by clicking the section <br> <br>
                  <b>Rules:</b> <br>
                  -You get 3 rolls per turn, and can lock the die's value by clicking on the die. <br>
                  -You must choose a section to get scored in each turn, even if it results in a 0 <br> <br>
@@ -43,35 +47,35 @@
             <p id="RulesClose" style="color: rgb(48 48 48 / 1); cursor: pointer; font-size: 32px; text-align: center;"><b>Close</b></p>
         </div>
 
-        <div id="DICE1" class="dice dice1" style="position: absolute; right: 580px; top: 256px;">
+        <div id="DICE1" class="dice dice1" style="position: absolute; right: 580px; top: 256px; display: none;">
         </div>
         <div style="position: absolute; right: 580px; top: 215px; width: 256px;
         background-color: rgba(255, 235, 205, 0.5);"> 
             <p id="DICE1Lock" style="font-size: 28px; margin-top: 0; margin-bottom: 0; text-align: center; display: none;">Locked</p>
         </div>
 
-        <div id="DICE2" class="dice dice2" style="position: absolute; right: 316px; top: 256px;">
+        <div id="DICE2" class="dice dice2" style="position: absolute; right: 316px; top: 256px; display: none;">
         </div>
         <div style="position: absolute; right: 316px; top: 215px; width: 256px;
         background-color: rgba(255, 235, 205, 0.5);"> 
             <p id="DICE2Lock" style="font-size: 28px; margin-top: 0; margin-bottom: 0; text-align: center; display: none;">Locked</p>
         </div>
 
-        <div id="DICE3" class="dice dice3" style="position: absolute; right: 52px; top: 256px;">
+        <div id="DICE3" class="dice dice3" style="position: absolute; right: 52px; top: 256px; display: none;">
         </div>
         <div style="position: absolute; right: 52px; top: 215px; width: 256px;
         background-color: rgba(255, 235, 205, 0.5);"> 
             <p id="DICE3Lock" style="font-size: 28px; margin-top: 0; margin-bottom: 0; text-align: center; display: none;">Locked</p>
         </div>
 
-        <div id="DICE4" class="dice dice4" style="position: absolute; right: 452px; top: 520px;">
+        <div id="DICE4" class="dice dice4" style="position: absolute; right: 452px; top: 520px; display: none;">
         </div>
         <div style="position: absolute; right: 452px; top: 789px; width: 256px;
         background-color: rgba(255, 235, 205, 0.5);"> 
             <p id="DICE4Lock" style="font-size: 28px; margin-top: 0; margin-bottom: 0; text-align: center; display: none;">Locked</p>
         </div>
 
-        <div id="DICE5" class="dice dice5" style="position: absolute; right: 188px; top: 520px;">
+        <div id="DICE5" class="dice dice5" style="position: absolute; right: 188px; top: 520px; display: none;">
         </div>
         <div style="position: absolute; right: 188px; top: 789px; width: 256px;
         background-color: rgba(255, 235, 205, 0.5);"> 
@@ -79,8 +83,18 @@
         </div>
 
         <div id="Roll" style="width: 100px; height: 64px; font-size: 28px; background-color: antiquewhite; text-align: center;
-        position: absolute; right: 390px; bottom: 16px; cursor: pointer;">
+        position: absolute; right: 390px; bottom: 16px; cursor: pointer; display: none;">
             <p style="margin-top: 18px; margin-bottom: 18px;">Roll</p>
+        </div>
+
+        <div id="RollWarning" style="background-color: antiquewhite; width: 512px; height: 512px; position: absolute;
+        left: 700px; top: 184px; display: none; text-align: center; border-radius: 16px; overflow: hidden;">
+            <p style="font-size: 64px; margin-top: 0; margin-bottom: 0;">
+                You already rolled 3 times! Please choose a scoring category before rolling again
+            </p>
+            <p id="RollWarningClose" style="font-size: 64px; cursor: pointer;">
+                <b>Close</b>
+            </p>
         </div>
 
 </body>

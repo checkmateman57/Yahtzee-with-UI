@@ -22,6 +22,9 @@ let Die5Lock = false
 
 
 var Roll = document.querySelector("#Roll")
+let RollCounter = 0
+var RollWarning = document.querySelector("#RollWarning")
+var RollWarningClose = document.querySelector("#RollWarningClose")
 
 function closeWindow(element) {
     element.style.display = "none"
@@ -33,10 +36,23 @@ function openWindow(element) {
 
 RulesClose.addEventListener("click", function() {
     closeWindow(Rules)
+    openWindow(die1)
+    openWindow(die2)
+    openWindow(die3)
+    openWindow(die4)
+    openWindow(die5)
+    openWindow(Roll)
 })
 RulesOpener.addEventListener("click", function() {
     openWindow(Rules)
     Rules.scrollTop = 0
+    closeWindow(die1)
+    closeWindow(die2)
+    closeWindow(die3)
+    closeWindow(die4)
+    closeWindow(die5)
+    closeWindow(Roll)
+
 })
 
 die1.addEventListener("click", function() {
@@ -239,11 +255,33 @@ function diceroll5() {
 }
 
 function diceroll() {
-    diceroll1();
-    diceroll2();
-    diceroll3();
-    diceroll4();
-    diceroll5();
+    if (RollCounter < 3) {
+        diceroll1();
+        diceroll2();
+        diceroll3();
+        diceroll4();
+        diceroll5();
+        RollCounter = RollCounter + 1
+    }
+    else if (RollCounter > 2) {
+        openWindow(RollWarning)
+        closeWindow(die1)
+        closeWindow(die2)
+        closeWindow(die3)
+        closeWindow(die4)
+        closeWindow(die5)
+        closeWindow(Roll)
+    }
 }
 
 Roll.addEventListener("click", diceroll)
+
+RollWarningClose.addEventListener("click", function() {
+    openWindow(die1)
+    openWindow(die2)
+    openWindow(die3)
+    openWindow(die4)
+    openWindow(die5)
+    openWindow(Roll)
+    closeWindow(RollWarning)
+})
