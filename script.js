@@ -42,6 +42,21 @@ RulesClose.addEventListener("click", function() {
     openWindow(die4)
     openWindow(die5)
     openWindow(Roll)
+    if (Die1Lock == true) {
+        openWindow(Lock1)
+    }
+    if (Die2Lock == true) {
+        openWindow(Lock2)
+    }
+    if (Die3Lock == true) {
+        openWindow(Lock3)
+    }
+    if (Die4Lock == true) {
+        openWindow(Lock4)
+    }
+    if (Die5Lock == true) {
+        openWindow(Lock5)
+    }
 })
 RulesOpener.addEventListener("click", function() {
     openWindow(Rules)
@@ -52,6 +67,11 @@ RulesOpener.addEventListener("click", function() {
     closeWindow(die4)
     closeWindow(die5)
     closeWindow(Roll)
+    closeWindow(Lock1)
+    closeWindow(Lock2)
+    closeWindow(Lock3)
+    closeWindow(Lock4)
+    closeWindow(Lock5)
 
 })
 
@@ -271,6 +291,11 @@ function diceroll() {
         closeWindow(die4)
         closeWindow(die5)
         closeWindow(Roll)
+        closeWindow(Lock1)
+        closeWindow(Lock2)
+        closeWindow(Lock3)
+        closeWindow(Lock4)
+        closeWindow(Lock5)
     }
 }
 
@@ -284,4 +309,19 @@ RollWarningClose.addEventListener("click", function() {
     openWindow(die5)
     openWindow(Roll)
     closeWindow(RollWarning)
+    if (Die1Lock == true) {
+        openWindow(Lock1)
+    }
+    if (Die2Lock == true) {
+        openWindow(Lock2)
+    }
+    if (Die3Lock == true) {
+        openWindow(Lock3)
+    }
+    if (Die4Lock == true) {
+        openWindow(Lock4)
+    }
+    if (Die5Lock == true) {
+        openWindow(Lock5)
+    }
 })
