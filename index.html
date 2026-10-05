@@ -99,57 +99,147 @@
 
 
 
+        <div id="ScoringTable" style="display: none;">
+            <div style="width: 324px; height: 32px; text-align: center; position: absolute; border: 4px solid antiquewhite;
+            left: 256px; top: 136px;">
+                <p style="color: antiquewhite; font-size: 24px; margin-top: 4px; margin-bottom: 4px;">Scoring Table</p>
+            </div>
 
-        <div class="Scoring" style="position: absolute; left: 256px; top: 172px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Ones</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 208px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Twos</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 244px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Threes</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 280px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Fours</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 316px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Fives</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 352px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Sixes</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 388px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Score</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 424px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Bonus</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 460px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">3 of a kind</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 496px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">4 of a kind</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 532px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Short Straight</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 568px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Long Straight</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 604px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Full House</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 640px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Chance</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 676px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Yahtzee</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 712px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Score</p>
-        </div>
-        <div class="Scoring" style="position: absolute; left: 256px; top: 748px;">
-            <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Grand Total</p>
+
+            <div class="Scoring" id="Ones" style="position: absolute; left: 256px; top: 172px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Ones</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 172px;">
+                <p id="OneScore"></p>
+            </div>
+
+
+            <div class="Scoring" id="Twos" style="position: absolute; left: 256px; top: 208px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Twos</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 208px;">
+                <p id="TwoScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="Threes" style="position: absolute; left: 256px; top: 244px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Threes</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 244px;">
+                <p id="ThreeScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="Fours" style="position: absolute; left: 256px; top: 280px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Fours</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 280px;">
+                <p id="FourScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="Fives" style="position: absolute; left: 256px; top: 316px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Fives</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 316px;">
+                <p id="FiveScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="Sixes" style="position: absolute; left: 256px; top: 352px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Sixes</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 352px;">
+                <p id="SixScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="UpperScore" style="position: absolute; left: 256px; top: 388px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Score</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 388px;">
+                <p id="UpScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="Bonus" style="position: absolute; left: 256px; top: 424px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Bonus</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 424px;">
+                <p id="BonusScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="ThreeKind" style="position: absolute; left: 256px; top: 460px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">3 of a kind</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 460px;">
+                <p  id="ThreeKindScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="FourKind" style="position: absolute; left: 256px; top: 496px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">4 of a kind</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 496px;">
+                <p id="FourKindScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="ShortStraight" style="position: absolute; left: 256px; top: 532px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Short Straight</p>
+            </div><div class="Scores" style="position: absolute; left: 516px; top: 532px;">
+                <p id="ShortStraightScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="LongStraight" style="position: absolute; left: 256px; top: 568px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Long Straight</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 568px;">
+                <p id="LongStraightScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="FullHouse" style="position: absolute; left: 256px; top: 604px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Full House</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 604px;">
+                <p id="FullHouseScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="Chance" style="position: absolute; left: 256px; top: 640px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Chance</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 640px;">
+                <p id="ChanceScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="Yahtzee" style="position: absolute; left: 256px; top: 676px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Yahtzee</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 676px;">
+                <p id="YahtzeeScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="LowerScore" style="position: absolute; left: 256px; top: 712px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Score</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 712px;">
+                <p id="LowScore"></p>
+            </div>
+            
+
+            <div class="Scoring" id="GrandTotal" style="position: absolute; left: 256px; top: 748px;">
+                <p style="font-size: 24px; margin-top: 4px; margin-bottom: 4px; color: antiquewhite;">Grand Total</p>
+            </div>
+            <div class="Scores" style="position: absolute; left: 516px; top: 748px;">
+                <p id="GrandScore"></p>
+            </div>
+            
         </div>
         
 

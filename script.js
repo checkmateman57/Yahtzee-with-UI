@@ -26,6 +26,44 @@ let RollCounter = 0
 var RollWarning = document.querySelector("#RollWarning")
 var RollWarningClose = document.querySelector("#RollWarningClose")
 
+var ScoringTable = document.querySelector("#ScoringTable")
+var Ones = document.querySelector("#Ones")
+var Twos = document.querySelector("#Twos")
+var Threes = document.querySelector("#Threes")
+var Fours = document.querySelector("#Fours")
+var Fives = document.querySelector("#Fives")
+var Sixes = document.querySelector("#Sixes")
+var UpperScore = document.querySelector("#UpperScore")
+var Bonus = document.querySelector("#Bonus")
+var ThreeKind = document.querySelector("#3Kind")
+var FourKind = document.querySelector("#4Kind")
+var ShortStraight = document.querySelector("#ShortStraight")
+var LongStraight = document.querySelector("#LongStraight")
+var FullHouse = document.querySelector("#FullHouse")
+var Chance = document.querySelector("#Chance")
+var Yahtzee = document.querySelector("#Yahtzee")
+var LowerScore = document.querySelector("#LowerScore")
+var GrandTotal = document.querySelector("#GrandTotal")
+
+var OneScore = document.querySelector("#OneScore")
+var TwoScore = document.querySelector("#TwoScore")
+var ThreeScore = document.querySelector("#ThreeScore")
+var FourScore = document.querySelector("#FourScore")
+var FiveScore = document.querySelector("#FiveScore")
+var SixeScore = document.querySelector("#SixeScore")
+var UpScore = document.querySelector("#UpScore")
+var BonusScore = document.querySelector("#BonusScore")
+var ThreeKindScore = document.querySelector("#ThreeKindScore")
+var FourKindScore = document.querySelector("#FourKindScore")
+var ShortStraightScore = document.querySelector("#ShortStraightScore")
+var LongStraightScore = document.querySelector("#LongStraightScore")
+var FullHouseScore = document.querySelector("#FullHouseScore")
+var ChanceScore = document.querySelector("#ChanceScore")
+var YahtzeeScore = document.querySelector("#YahtzeeScore")
+var LowScore = document.querySelector("#LowScore")
+var GrandTotalScore = document.querySelector("#GrandTotalScore")
+
+
 function closeWindow(element) {
     element.style.display = "none"
 }
@@ -42,6 +80,7 @@ RulesClose.addEventListener("click", function() {
     openWindow(die4)
     openWindow(die5)
     openWindow(Roll)
+    openWindow(ScoringTable)
     if (Die1Lock == true) {
         openWindow(Lock1)
     }
@@ -72,6 +111,7 @@ RulesOpener.addEventListener("click", function() {
     closeWindow(Lock3)
     closeWindow(Lock4)
     closeWindow(Lock5)
+    closeWindow(ScoringTable)
 
 })
 
@@ -296,6 +336,7 @@ function diceroll() {
         closeWindow(Lock3)
         closeWindow(Lock4)
         closeWindow(Lock5)
+        closeWindow(ScoringTable)
     }
 }
 
@@ -308,6 +349,7 @@ RollWarningClose.addEventListener("click", function() {
     openWindow(die4)
     openWindow(die5)
     openWindow(Roll)
+    openWindow(ScoringTable)
     closeWindow(RollWarning)
     if (Die1Lock == true) {
         openWindow(Lock1)
