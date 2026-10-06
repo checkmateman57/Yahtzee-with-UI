@@ -63,6 +63,12 @@ var YahtzeeScore = document.querySelector("#YahtzeeScore")
 var LowScore = document.querySelector("#LowScore")
 var GrandTotalScore = document.querySelector("#GrandScore")
 
+let RollResult1 = 0;
+let RollResult2 = 0;
+let RollResult3 = 0;
+let RollResult4 = 0;
+let RollResult5 = 0;
+
 
 function closeWindow(element) {
     element.style.display = "none"
@@ -170,7 +176,7 @@ die5.addEventListener("click", function() {
 
 function diceroll1() {
     if (Die1Lock == false) {
-        let RollResult1 = Math.floor(Math.random() *6) + 1;
+        RollResult1 = Math.floor(Math.random() *6) + 1;
         if (RollResult1 == 6) {
             die1.classList.remove("dice1", "dice2", "dice3", "dice4", "dice5", "dice6")
             die1.classList.add("dice6")
@@ -199,7 +205,7 @@ function diceroll1() {
 }
 function diceroll2() {
     if (Die2Lock == false) {
-        let RollResult2 = Math.floor(Math.random() *6) + 1;
+        RollResult2 = Math.floor(Math.random() *6) + 1;
         if (RollResult2 == 6) {
             die2.classList.remove("dice1", "dice2", "dice3", "dice4", "dice5", "dice6")
             die2.classList.add("dice6")
@@ -228,7 +234,7 @@ function diceroll2() {
 }
 function diceroll3() {
     if (Die3Lock == false) {
-        let RollResult3 = Math.floor(Math.random() *6) + 1;
+        RollResult3 = Math.floor(Math.random() *6) + 1;
         if (RollResult3 == 6) {
             die3.classList.remove("dice1", "dice2", "dice3", "dice4", "dice5", "dice6")
             die3.classList.add("dice6")
@@ -257,7 +263,7 @@ function diceroll3() {
 }
 function diceroll4() {
     if (Die4Lock == false) {
-        let RollResult4 = Math.floor(Math.random() *6) + 1;
+        RollResult4 = Math.floor(Math.random() *6) + 1;
         if (RollResult4 == 6) {
             die4.classList.remove("dice1", "dice2", "dice3", "dice4", "dice5", "dice6")
             die4.classList.add("dice6")
@@ -286,7 +292,7 @@ function diceroll4() {
 }
 function diceroll5() {
     if (Die5Lock == false) {
-        let RollResult5 = Math.floor(Math.random() *6) + 1;
+        RollResult5 = Math.floor(Math.random() *6) + 1;
         if (RollResult5 == 6) {
             die5.classList.remove("dice1", "dice2", "dice3", "dice4", "dice5", "dice6")
             die5.classList.add("dice6")
@@ -366,4 +372,30 @@ RollWarningClose.addEventListener("click", function() {
     if (Die5Lock == true) {
         openWindow(Lock5)
     }
+})
+
+function DiceValues() {
+    let Dice = [RollResult1, RollResult2, RollResult3, RollResult4, RollResult5];
+    Dice.sort((a, b) => a - b);
+    return Dice;
+}
+
+Ones.addEventListener("click", function() {
+    let Score = 0
+    if (RollResult1 == 1) {
+        Score = Score + 1
+    }
+    if (RollResult2 == 1) {
+        Score = Score + 1
+    }
+    if (RollResult3 == 1) {
+        Score = Score +  1
+    }
+    if (RollResult4 == 1) {
+        Score = Score +  1
+    }
+    if (RollResult5 == 1) {
+        Score = Score +  1
+    }
+    OneScore.innerHTML = Score
 })
