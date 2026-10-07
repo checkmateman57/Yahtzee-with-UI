@@ -63,11 +63,16 @@ var YahtzeeScore = document.querySelector("#YahtzeeScore")
 var LowScore = document.querySelector("#LowScore")
 var GrandTotalScore = document.querySelector("#GrandScore")
 
+let OneChekcer = false
+
 let RollResult1 = 0;
 let RollResult2 = 0;
 let RollResult3 = 0;
 let RollResult4 = 0;
 let RollResult5 = 0;
+
+var Invalid = document.querySelector("#Invalid")
+var InvalidClose = document.querySelector("#InvalidClose")
 
 
 function closeWindow(element) {
@@ -78,8 +83,7 @@ function openWindow(element) {
     element.style.display = "block"
 }
 
-RulesClose.addEventListener("click", function() {
-    closeWindow(Rules)
+function openBunch() {
     openWindow(die1)
     openWindow(die2)
     openWindow(die3)
@@ -102,10 +106,9 @@ RulesClose.addEventListener("click", function() {
     if (Die5Lock == true) {
         openWindow(Lock5)
     }
-})
-RulesOpener.addEventListener("click", function() {
-    openWindow(Rules)
-    Rules.scrollTop = 0
+}
+
+function closeBunch() {
     closeWindow(die1)
     closeWindow(die2)
     closeWindow(die3)
@@ -118,60 +121,104 @@ RulesOpener.addEventListener("click", function() {
     closeWindow(Lock4)
     closeWindow(Lock5)
     closeWindow(ScoringTable)
+}
 
+function NoNo() {
+    openWindow(Invalid)
+    closeBunch()
+}
+
+RulesClose.addEventListener("click", function() {
+    closeWindow(Rules)
+    openBunch()
+})
+RulesOpener.addEventListener("click", function() {
+    openWindow(Rules)
+    Rules.scrollTop = 0
+    closeBunch()
 })
 
 die1.addEventListener("click", function() {
-    if (Die1Lock == false) {
-        openWindow(Lock1)
-        Die1Lock = true
+    if (RollCounter == 0) {
+        NoNo()
     }
-    else if (Die1Lock == true) {
-        closeWindow(Lock1)
-        Die1Lock = false
+    else {
+        if (Die1Lock == false) {
+            openWindow(Lock1)
+            Die1Lock = true
+        }
+        else if (Die1Lock == true) {
+            closeWindow(Lock1)
+            Die1Lock = false
+        }
     }
 })
 die2.addEventListener("click", function() {
-    if (Die2Lock == false) {
-        openWindow(Lock2)
-        Die2Lock = true
+    if (RollCounter == 0) {
+        NoNo()
     }
-    else if (Die2Lock == true) {
-        closeWindow(Lock2)
-        Die2Lock = false
+    else {
+        if (Die2Lock == false) {
+            openWindow(Lock2)
+            Die2Lock = true
+        }
+        else if (Die2Lock == true) {
+            closeWindow(Lock2)
+            Die2Lock = false
+        }
     }
 })
 
 die3.addEventListener("click", function() {
-    if (Die3Lock == false) {
-        openWindow(Lock3)
-        Die3Lock = true
+    if (RollCounter == 0) {
+        NoNo()
     }
-    else if (Die3Lock == true) {
-        closeWindow(Lock3)
-        Die3Lock = false
+    else {
+        if (Die3Lock == false) {
+            openWindow(Lock3)
+            Die3Lock = true
+        }
+        else if (Die3Lock == true) {
+            closeWindow(Lock3)
+            Die3Lock = false
+        }
     }
 })
 die4.addEventListener("click", function() {
-    if (Die4Lock == false) {
-        openWindow(Lock4)
-        Die4Lock = true
+    if (RollCounter == 0) {
+        NoNo()
     }
-    else if (Die4Lock == true) {
-        closeWindow(Lock4)
-        Die4Lock = false
+    else {
+        if (Die4Lock == false) {
+            openWindow(Lock4)
+            Die4Lock = true
+        }
+        else if (Die4Lock == true) {
+            closeWindow(Lock4)
+            Die4Lock = false
+        }
     }
 })
 
 die5.addEventListener("click", function() {
-    if (Die5Lock == false) {
-        openWindow(Lock5)
-        Die5Lock = true
+    if (RollCounter == 0) {
+        NoNo()
     }
-    else if (Die5Lock == true) {
-        closeWindow(Lock5)
-        Die5Lock = false
+    else {
+        if (Die5Lock == false) {
+            openWindow(Lock5)
+            Die5Lock = true
+        }
+        else if (Die5Lock == true) {
+            closeWindow(Lock5)
+            Die5Lock = false
+        }
     }
+})
+
+InvalidClose.addEventListener("click", function() {
+    closeWindow(Invalid)
+    openBunch()
 })
 
 function diceroll1() {
@@ -331,47 +378,15 @@ function diceroll() {
     }
     else if (RollCounter > 2) {
         openWindow(RollWarning)
-        closeWindow(die1)
-        closeWindow(die2)
-        closeWindow(die3)
-        closeWindow(die4)
-        closeWindow(die5)
-        closeWindow(Roll)
-        closeWindow(Lock1)
-        closeWindow(Lock2)
-        closeWindow(Lock3)
-        closeWindow(Lock4)
-        closeWindow(Lock5)
-        closeWindow(ScoringTable)
+        closeBunch()
     }
 }
 
 Roll.addEventListener("click", diceroll)
 
 RollWarningClose.addEventListener("click", function() {
-    openWindow(die1)
-    openWindow(die2)
-    openWindow(die3)
-    openWindow(die4)
-    openWindow(die5)
-    openWindow(Roll)
-    openWindow(ScoringTable)
     closeWindow(RollWarning)
-    if (Die1Lock == true) {
-        openWindow(Lock1)
-    }
-    if (Die2Lock == true) {
-        openWindow(Lock2)
-    }
-    if (Die3Lock == true) {
-        openWindow(Lock3)
-    }
-    if (Die4Lock == true) {
-        openWindow(Lock4)
-    }
-    if (Die5Lock == true) {
-        openWindow(Lock5)
-    }
+    openBunch()
 })
 
 function DiceValues() {
@@ -380,22 +395,46 @@ function DiceValues() {
     return Dice;
 }
 
+function clearDice() {
+    Die1Lock = false
+    Die2Lock = false
+    Die3Lock = false
+    Die4Lock = false
+    Die5Lock = false
+    closeWindow(Lock1)
+    closeWindow(Lock2)
+    closeWindow(Lock3)
+    closeWindow(Lock4)
+    closeWindow(Lock5)
+}
+
 Ones.addEventListener("click", function() {
-    let Score = 0
-    if (RollResult1 == 1) {
-        Score = Score + 1
+    if (RollCounter == 0) {
+        NoNo()
     }
-    if (RollResult2 == 1) {
-        Score = Score + 1
+    else if (OneChekcer == true) {
+        NoNo()
     }
-    if (RollResult3 == 1) {
-        Score = Score +  1
+    else {
+        let Score = 0
+        if (RollResult1 == 1) {
+            Score = Score + 1
+        }
+        if (RollResult2 == 1) {
+            Score = Score + 1
+        }
+        if (RollResult3 == 1) {
+            Score = Score +  1
+        }
+        if (RollResult4 == 1) {
+            Score = Score +  1
+        }
+        if (RollResult5 == 1) {
+            Score = Score +  1
+        }
+        OneScore.innerHTML = Score
+        RollCounter = 0
+        OneChekcer = true
+        clearDice()
     }
-    if (RollResult4 == 1) {
-        Score = Score +  1
-    }
-    if (RollResult5 == 1) {
-        Score = Score +  1
-    }
-    OneScore.innerHTML = Score
 })
