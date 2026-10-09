@@ -50,7 +50,7 @@ var TwoScore = document.querySelector("#TwoScore")
 var ThreeScore = document.querySelector("#ThreeScore")
 var FourScore = document.querySelector("#FourScore")
 var FiveScore = document.querySelector("#FiveScore")
-var SixeScore = document.querySelector("#SixScore")
+var SixScore = document.querySelector("#SixScore")
 var UpScore = document.querySelector("#UpScore")
 var BonusScore = document.querySelector("#BonusScore")
 var ThreeKindScore = document.querySelector("#ThreeKindScore")
@@ -63,7 +63,16 @@ var YahtzeeScore = document.querySelector("#YahtzeeScore")
 var LowScore = document.querySelector("#LowScore")
 var GrandTotalScore = document.querySelector("#GrandScore")
 
+var Zero = document.querySelector("#Zero")
+var ZeroNo = document.querySelector("#ZeroNo")
+var ZeroYes = document.querySelector("#ZeroYes")
+
 let OneChekcer = false
+let TwoChecker = false
+let ThreeChecker = false
+let FourChecker = false
+let FiveChecker = false
+let SixChecker = false
 
 let RollResult1 = 0;
 let RollResult2 = 0;
@@ -408,6 +417,40 @@ function clearDice() {
     closeWindow(Lock5)
 }
 
+function BonusPoints() {
+    if (OneChekcer == true && TwoChecker == true && ThreeChecker == true && FourChecker == true && FiveChecker == true && SixChecker == true) {
+        let Score = 0
+        let Bonus = 0
+        Score += Ones
+        Score += Twos
+        Score += Threes
+        Score += Fours
+        Score += Fives
+        Score += Sixes
+        UpScore.innerHTML = Score
+        if (Score > 62) {
+            let Score = 35
+            BonusScore.innerHTML = Score
+            Bonus = 35
+        }
+        else {
+            let Score = 0
+            BonusScore.innerHTML = Score
+            Bonus = 0
+        }
+    }
+}
+
+function ZeroChecker() {
+    closeBunch()
+    openWindow(Zero)
+}
+
+function Reset() {
+    clearDice()
+    RollCounter = 0
+}
+
 Ones.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
@@ -432,9 +475,279 @@ Ones.addEventListener("click", function() {
         if (RollResult5 == 1) {
             Score = Score +  1
         }
-        OneScore.innerHTML = Score
-        RollCounter = 0
-        OneChekcer = true
-        clearDice()
+        if (Score == 0) {
+            ZeroChecker()
+            ZeroNo.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+            })
+            ZeroYes.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+                Reset()
+                OneChekcer = true
+                Ones = Score
+                OneScore.innerHTML = Score
+                clearDice()
+                BonusPoints()
+            })
+        }
+        else {
+            Reset()
+            OneScore.innerHTML = Score
+            OneChekcer = true
+            Ones = Score
+            BonusPoints()
+        }
+    }
+})
+
+Twos.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (TwoChecker == true) {
+        NoNo()
+    }
+    else {
+        let Score = 0
+        if (RollResult1 == 2) {
+            Score += 2
+        }
+        if (RollResult2 == 2) {
+            Score += 2
+        }
+        if (RollResult3 == 2) {
+            Score += 2
+        }
+        if (RollResult4 == 2) {
+            Score += 2
+        }
+        if (RollResult5 == 2) {
+            Score += 2
+        }
+        if (Score == 0) {
+            ZeroChecker()
+            ZeroNo.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+            })
+            ZeroYes.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+                Reset()
+                Twos = Score
+                TwoScore.innerHTML = Score
+                TwoChecker = true
+                BonusPoints()
+            })
+        }
+        else {
+            Reset()
+            Twos = Score
+            TwoScore.innerHTML = Score
+            TwoChecker = true
+            BonusPoints()
+        }
+    }
+})
+
+Threes.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (ThreeChecker == true) {
+        NoNo()
+    }
+    else {
+        let Score = 0
+        if (RollResult1 == 3) {
+            Score += 3
+        }
+        if (RollResult2 == 3) {
+            Score += 3
+        }
+        if (RollResult3 == 3) {
+            Score += 3
+        }
+        if (RollResult4 == 3) {
+            Score += 3
+        }
+        if (RollResult5 == 3) {
+            Score += 3
+        }
+        if (Score == 0) {
+            ZeroChecker()
+            ZeroNo.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+            })
+            ZeroYes.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+                Reset()
+                Threes = Score
+                ThreeScore.innerHTML = Score
+                ThreeChecker = true
+                BonusPoints()
+            })
+        }
+        else {
+            Reset()
+            Threes = Score
+            ThreeScore.innerHTML = Score
+            ThreeChecker = true
+            BonusPoints()
+        }
+    }
+})
+
+Fours.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (FourChecker == true) {
+        NoNo()
+    }
+    else {
+        let Score = 0
+        if (RollResult1 == 4) {
+            Score += 4
+        }
+        if (RollResult2 == 4) {
+            Score += 4
+        }
+        if (RollResult3 == 4) {
+            Score += 4
+        }
+        if (RollResult4 == 4) {
+            Score += 4
+        }
+        if (RollResult5 == 4) {
+            Score += 4
+        }
+        if (Score == 0) {
+            ZeroChecker()
+            ZeroNo.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+            })
+            ZeroYes.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+                Reset()
+                Fours = Score
+                FourScore.innerHTML = Score
+                FourChecker = true
+                BonusPoints()
+            })
+        }
+        else {
+            Reset()
+            Fours = Score
+            FourScore.innerHTML = Score
+            FourChecker = true
+            BonusPoints()
+        }
+    }
+})
+
+Fives.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (FiveChecker == true) {
+        NoNo()
+    }
+    else {
+        let Score = 0
+        if (RollResult1 == 5) {
+            Score += 5
+        }
+        if (RollResult2 == 5) {
+            Score += 5
+        }
+        if (RollResult3 == 5) {
+            Score += 5
+        }
+        if (RollResult4 == 5) {
+            Score += 5
+        }
+        if (RollResult5 == 5) {
+            Score += 5
+        }
+        if (Score == 0) {
+            ZeroChecker()
+            ZeroNo.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+            })
+            ZeroYes.addEventListener("click", function() {
+                openBunch()
+                closeWindow(Zero)
+                Reset()
+                Fives = Score
+                FiveScore.innerHTML = Score
+                FiveChecker = true
+                BonusPoints()
+            })
+        }
+        else {
+            Reset()
+            Fives = Score
+            FiveScore.innerHTML = Score
+            FiveChecker = true
+            BonusPoints()
+        }
+    }
+})
+
+Sixes.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (SixChecker == true) {
+        NoNo()
+    }
+    else {
+        let Score = 0
+        if (RollResult1 == 6) {
+            Score += 6
+        }
+        if (RollResult2 == 6) {
+            Score += 6
+        }
+        if (RollResult3 == 6) {
+            Score += 6
+        }
+        if (RollResult4 == 6) {
+            Score += 6
+        }
+        if (RollResult5 == 6) {
+            Score += 6
+        }
+        if (Score == 0) {
+            ZeroChecker()
+            ZeroNo.addEventListener("click", function() {
+                closeWindow(Zero)
+                openBunch()
+            })
+            ZeroYes.addEventListener("click", function() {
+                closeWindow(Zero)
+                openBunch()
+                Reset()
+                Sixes = Score
+                SixScore.innerHTML = Score
+                SixChecker = true
+                BonusPoints()
+            })
+        }
+        else {
+            Reset()
+            Sixes = Score
+            SixScore.innerHTML = Score
+            SixChecker = true
+            BonusPoints()
+        }
     }
 })
