@@ -73,6 +73,7 @@ let ThreeChecker = false
 let FourChecker = false
 let FiveChecker = false
 let SixChecker = false
+let CurrentChecker = 0
 
 let RollResult1 = 0;
 let RollResult2 = 0;
@@ -477,19 +478,23 @@ Ones.addEventListener("click", function() {
         }
         if (Score == 0) {
             ZeroChecker()
+            CurrentChecker = 1
             ZeroNo.addEventListener("click", function() {
                 openBunch()
                 closeWindow(Zero)
+                CurrentChecker = 0
             })
             ZeroYes.addEventListener("click", function() {
-                openBunch()
-                closeWindow(Zero)
-                Reset()
-                OneChekcer = true
-                Ones = Score
-                OneScore.innerHTML = Score
-                clearDice()
-                BonusPoints()
+                if (CurrentChecker == 1) {
+                    openBunch()
+                    closeWindow(Zero)
+                    Reset()
+                    OneChekcer = true
+                    Ones = Score
+                    OneScore.innerHTML = Score
+                    clearDice()
+                    BonusPoints()
+                }
             })
         }
         else {
@@ -528,18 +533,22 @@ Twos.addEventListener("click", function() {
         }
         if (Score == 0) {
             ZeroChecker()
+            CurrentChecker = 2
             ZeroNo.addEventListener("click", function() {
                 openBunch()
                 closeWindow(Zero)
+                CurrentChecker = 0
             })
             ZeroYes.addEventListener("click", function() {
-                openBunch()
-                closeWindow(Zero)
-                Reset()
-                Twos = Score
-                TwoScore.innerHTML = Score
-                TwoChecker = true
-                BonusPoints()
+                if (CurrentChecker == 2) {
+                    openBunch()
+                    closeWindow(Zero)
+                    Reset()
+                    Twos = Score
+                    TwoScore.innerHTML = Score
+                    TwoChecker = true
+                    BonusPoints()
+                }
             })
         }
         else {
@@ -578,18 +587,22 @@ Threes.addEventListener("click", function() {
         }
         if (Score == 0) {
             ZeroChecker()
+            CurrentChecker = 3
             ZeroNo.addEventListener("click", function() {
                 openBunch()
                 closeWindow(Zero)
+                CurrentChecker = 0
             })
             ZeroYes.addEventListener("click", function() {
-                openBunch()
-                closeWindow(Zero)
-                Reset()
-                Threes = Score
-                ThreeScore.innerHTML = Score
-                ThreeChecker = true
-                BonusPoints()
+                if (CurrentChecker == 3) {
+                    openBunch()
+                    closeWindow(Zero)
+                    Reset()
+                    Threes = Score
+                    ThreeScore.innerHTML = Score
+                    ThreeChecker = true
+                    BonusPoints()
+                }
             })
         }
         else {
@@ -628,18 +641,22 @@ Fours.addEventListener("click", function() {
         }
         if (Score == 0) {
             ZeroChecker()
+            CurrentChecker = 4
             ZeroNo.addEventListener("click", function() {
                 openBunch()
                 closeWindow(Zero)
+                CurrentChecker = 0
             })
             ZeroYes.addEventListener("click", function() {
-                openBunch()
-                closeWindow(Zero)
-                Reset()
-                Fours = Score
-                FourScore.innerHTML = Score
-                FourChecker = true
-                BonusPoints()
+                if (CurrentChecker == 4) {
+                    openBunch()
+                    closeWindow(Zero)
+                    Reset()
+                    Fours = Score
+                    FourScore.innerHTML = Score
+                    FourChecker = true
+                    BonusPoints()
+                }
             })
         }
         else {
@@ -678,18 +695,22 @@ Fives.addEventListener("click", function() {
         }
         if (Score == 0) {
             ZeroChecker()
+            CurrentChecker = 5
             ZeroNo.addEventListener("click", function() {
                 openBunch()
                 closeWindow(Zero)
+                CurrentChecker = 0
             })
             ZeroYes.addEventListener("click", function() {
-                openBunch()
-                closeWindow(Zero)
-                Reset()
-                Fives = Score
-                FiveScore.innerHTML = Score
-                FiveChecker = true
-                BonusPoints()
+                if (CurrentChecker == 5) {
+                    openBunch()
+                    closeWindow(Zero)
+                    Reset()
+                    Fives = Score
+                    FiveScore.innerHTML = Score
+                    FiveChecker = true
+                    BonusPoints()
+                }
             })
         }
         else {
@@ -728,18 +749,22 @@ Sixes.addEventListener("click", function() {
         }
         if (Score == 0) {
             ZeroChecker()
+            CurrentChecker = 6
             ZeroNo.addEventListener("click", function() {
                 closeWindow(Zero)
                 openBunch()
+                CurrentChecker = 0
             })
             ZeroYes.addEventListener("click", function() {
-                closeWindow(Zero)
-                openBunch()
-                Reset()
-                Sixes = Score
-                SixScore.innerHTML = Score
-                SixChecker = true
-                BonusPoints()
+                if (CurrentChecker == 6) {
+                    closeWindow(Zero)
+                    openBunch()
+                    Reset()
+                    Sixes = Score
+                    SixScore.innerHTML = Score
+                    SixChecker = true
+                    BonusPoints()
+                }
             })
         }
         else {
