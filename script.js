@@ -76,6 +76,8 @@ let SixChecker = false
 let CurrentChecker = 0
 let ChanceChecker = false
 let YahtzeeChecker = false
+let LongStraightChecker = false
+let ShortStraightChecker = false
 
 let RollResult1 = 0;
 let RollResult2 = 0;
@@ -85,6 +87,8 @@ let RollResult5 = 0;
 
 var Invalid = document.querySelector("#Invalid")
 var InvalidClose = document.querySelector("#InvalidClose")
+
+let Dice = [RollResult1, RollResult2, RollResult3, RollResult4, RollResult5]
 
 
 function closeWindow(element) {
@@ -775,6 +779,90 @@ Sixes.addEventListener("click", function() {
             SixScore.innerHTML = Score
             SixChecker = true
             BonusPoints()
+        }
+    }
+})
+
+ShortStraight.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (ShortStraightChecker == true) {
+        NoNo()
+    }
+    else {
+        let Dice = DiceValues()
+        if (
+            (Dice[0] + 1 == Dice[1] && Dice[1] +1 == Dice[2] && Dice[2] + 1 == Dice[3]) ||
+            (Dice[1] + 1 == Dice[2] && Dice[2] + 1 == Dice[3] && Dice[3] + 1 == Dice[4]) ||
+            (Dice[0] + 1 == Dice[1] && Dice[1] + 1 == Dice[3] && Dice[3] + 1 == Dice[4]) ||
+            (Dice[0] + 1 == Dice[1] && Dice[1] + 1 == Dice[2] && Dice[2] + 1 == Dice[4]) ){
+            let Score = 0
+            Score += 30
+            ShortStraight = Score
+            ShortStraightScore.innerHTML = Score
+            Reset()
+            ShortStraightChecker = true
+        }
+        else {
+          ZeroChecker()
+            CurrentChecker = 9
+            ZeroNo.addEventListener("click", function() {
+                closeWindow(Zero)
+                openBunch()
+                CurrentChecker = 0
+            })
+            ZeroYes.addEventListener("click", function() {
+                if (CurrentChecker == 9) {
+                    let Score = 0
+                    closeWindow(Zero)
+                    openBunch()
+                    Reset()
+                    ShortStraight = Score
+                    ShortStraightScore.innerHTML = Score
+                    ShortStraightChecker = true
+                }
+            })  
+        }
+    }
+})
+
+LongStraight.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (LongStraightChecker == true) {
+        NoNo()
+    }
+    else{
+        let Dice = DiceValues()
+        if (Dice[0] + 1 == Dice[1] && Dice[1] + 1 == Dice[2] && Dice[2] + 1 == Dice[3] && Dice[3] + 1 == Dice[4]) {
+            let Score = 0
+            Score += 40
+            LongStraight = Score
+            LongStraightScore.innerHTML = Score
+            Reset()
+            LongStraightChecker = true
+        }
+        else {
+            ZeroChecker()
+            CurrentChecker = 10
+            ZeroNo.addEventListener("click", function() {
+                closeWindow(Zero)
+                openBunch()
+                CurrentChecker = 0
+            })
+            ZeroYes.addEventListener("click", function() {
+                if (CurrentChecker == 10) {
+                    let Score = 0
+                    closeWindow(Zero)
+                    openBunch()
+                    Reset()
+                    LongStraight = Score
+                    LongStraightScore.innerHTML = Score
+                    LongStraightChecker = true
+                }
+            })
         }
     }
 })
