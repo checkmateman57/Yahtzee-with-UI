@@ -74,6 +74,8 @@ let FourChecker = false
 let FiveChecker = false
 let SixChecker = false
 let CurrentChecker = 0
+let ChanceChecker = false
+let YahtzeeChecker = false
 
 let RollResult1 = 0;
 let RollResult2 = 0;
@@ -773,6 +775,66 @@ Sixes.addEventListener("click", function() {
             SixScore.innerHTML = Score
             SixChecker = true
             BonusPoints()
+        }
+    }
+})
+
+Chance.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (ChanceChecker == true) {
+        NoNo()
+    }
+    else {
+        let Score = 0
+        Score += RollResult1
+        Score += RollResult2
+        Score += RollResult3
+        Score += RollResult4
+        Score += RollResult5
+        Chance = Score
+        ChanceScore.innerHTML = Score
+        Reset()
+        ChanceChecker = true
+    }
+})
+
+Yahtzee.addEventListener("click", function() {
+    if (RollCounter == 0) {
+        NoNo()
+    }
+    else if (YahtzeeChecker == true) {
+        NoNo()
+    }
+    else {
+        if (RollResult1 == RollResult2 && RollResult3 == RollResult4 && RollResult5 == RollResult1 && RollResult5 == RollResult3){
+            let Score = 0
+            Score += 50
+            Yahtzee = Score
+            YahtzeeScore.innerHTML = Score
+            Reset()
+            YahtzeeChecker = true
+        }
+        else {
+            ZeroChecker()
+            CurrentChecker = 12
+            ZeroNo.addEventListener("click", function() {
+                closeWindow(Zero)
+                openBunch()
+                CurrentChecker = 0
+            })
+            ZeroYes.addEventListener("click", function() {
+                if (CurrentChecker == 12) {
+                    let Score = 0
+                    closeWindow(Zero)
+                    openBunch()
+                    Reset()
+                    Yahtzee = Score
+                    YahtzeeScore.innerHTML = Score
+                    YahtzeeChecker = true
+                }
+            })
         }
     }
 })
