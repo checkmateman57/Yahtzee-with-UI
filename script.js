@@ -96,6 +96,10 @@ var InvalidClose = document.querySelector("#InvalidClose")
 
 let Dice = [RollResult1, RollResult2, RollResult3, RollResult4, RollResult5]
 
+var Final = document.querySelector("#Final")
+var EndMessage = document.querySelector("#EndMessage")
+var FinalClose = document.querySelector("#FinalClose")
+
 
 function closeWindow(element) {
     element.style.display = "none"
@@ -411,6 +415,11 @@ RollWarningClose.addEventListener("click", function() {
     openBunch()
 })
 
+FinalClose.addEventListener("click", function() {
+    closeWindow(Final)
+    openBunch()
+})
+
 function DiceValues() {
     let Dice = [RollResult1, RollResult2, RollResult3, RollResult4, RollResult5];
     Dice.sort((a, b) => a - b);
@@ -430,6 +439,39 @@ function clearDice() {
     closeWindow(Lock5)
 }
 
+function Finish() {
+    if (GrandTotal < 100) {
+        openWindow(Final)
+        closeBunch()
+        EndMessage.innerHTML = "You got a score of" + GrandTotal + ". You can do better than that! Come and play another game."
+    }
+    else if (GrandTotal >= 100 && GrandTotal <= 150) {
+        openWindow(Final)
+        closeBunch()
+        EndMessage.innerHTML = "You got a score of " + GrandTotal + ". Not bad, but you can do better. Come and play another game."
+    }
+    else if (GrandTotal > 150 && GrandTotal < 200) {
+        openWindow(Final)
+        closeBunch()
+        EndMessage.innerHTML = "You got a score of " + GrandTotal + "! Nice Job! Thats an average score. Improve your skills and play another game"
+    }
+    else if (GrandTotal >= 200 && GrandTotal < 250) {
+        openWindow(Final)
+        closeBunch()
+        EndMessage.innerHTML = "You got a score of " + GrandTotal + "! WOW! That's an advanced score, Could you do even better in another game?"
+    }
+    else if (GrandTotal >= 250 && GrandTotal <300) {
+        openWindow(Final)
+        closeBunch()
+        EndMessage.innerHTML = "You got a score of " + GrandTotal + "! WOW! That's an incredible score. It'd be pretty hard to beat that"
+    }
+    else if (GrandTotal >= 300) {
+        openWindow(Final)
+        closeBunch()
+        EndMessage.innerHTML = "YOU GOT A SCORE OF " + GrandTotal + "! INCREDIBLE JOB! It's almost impossible to beat that score"
+    }
+}
+
 function Total() {
     if (UpperScoreChecker == true && LowerScoreChecker == true) {
         Score = 0
@@ -437,6 +479,9 @@ function Total() {
         Score += LowerScore
         GrandTotal = Score
         GrandTotalScore.innerHTML = Score
+        setTimeout(function() {
+            Finish()
+        }, 3000)
     }
 }
 
