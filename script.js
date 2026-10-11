@@ -1,6 +1,10 @@
 var Rules = document.querySelector("#Rules")
 var RulesOpener = document.querySelector("#RulesOpener")
+var RulesOpen = document.querySelector("#RulesOpen")
 var RulesClose = document.querySelector("#RulesClose")
+var Scoring = document.querySelector("#Scoring")
+var ScoringOpen = document.querySelector("#ScoringOpen")
+var ScoringClose = document.querySelector("#ScoringClose")
 
 var die1 = document.querySelector("#DICE1")
 var die2 = document.querySelector("#DICE2")
@@ -68,7 +72,7 @@ var Zero = document.querySelector("#Zero")
 var ZeroNo = document.querySelector("#ZeroNo")
 var ZeroYes = document.querySelector("#ZeroYes")
 
-let OneChekcer = false
+let OneChecker = false
 let TwoChecker = false
 let ThreeChecker = false
 let FourChecker = false
@@ -99,6 +103,11 @@ let Dice = [RollResult1, RollResult2, RollResult3, RollResult4, RollResult5]
 var Final = document.querySelector("#Final")
 var EndMessage = document.querySelector("#EndMessage")
 var FinalClose = document.querySelector("#FinalClose")
+
+var NewGame = document.querySelector("#NewGame")
+var New = document.querySelector("#New")
+var ConfirmNew = document.querySelector("#ConfirmNew")
+var DenyNew = document.querySelector("#DenyNew")
 
 
 function closeWindow(element) {
@@ -147,11 +156,16 @@ function closeBunch() {
     closeWindow(Lock4)
     closeWindow(Lock5)
     closeWindow(ScoringTable)
+    closeWindow(Rules)
+    closeWindow(Scoring)
+    closeWindow(Invalid)
+    closeWindow(Zero)
+    closeWindow(New)
 }
 
 function NoNo() {
-    openWindow(Invalid)
     closeBunch()
+    openWindow(Invalid)
 }
 
 RulesClose.addEventListener("click", function() {
@@ -159,9 +173,27 @@ RulesClose.addEventListener("click", function() {
     openBunch()
 })
 RulesOpener.addEventListener("click", function() {
+    closeBunch()
     openWindow(Rules)
     Rules.scrollTop = 0
+
+})
+
+RulesOpen.addEventListener("click", function() {
     closeBunch()
+    openWindow(Rules)
+    Rules.scrollTop = 0
+})
+
+ScoringOpen.addEventListener("click", function() {
+    closeBunch()
+    openWindow(Scoring)
+    Scoring.scrollTop = 0
+})
+
+ScoringClose.addEventListener("click", function() {
+    closeBunch()
+    openBunch()
 })
 
 die1.addEventListener("click", function() {
@@ -403,8 +435,9 @@ function diceroll() {
         RollCounter = RollCounter + 1
     }
     else if (RollCounter > 2) {
-        openWindow(RollWarning)
         closeBunch()
+        openWindow(RollWarning)
+        
     }
 }
 
@@ -441,33 +474,33 @@ function clearDice() {
 
 function Finish() {
     if (GrandTotal < 100) {
-        openWindow(Final)
         closeBunch()
+        openWindow(Final)
         EndMessage.innerHTML = "You got a score of" + GrandTotal + ". You can do better than that! Come and play another game."
     }
     else if (GrandTotal >= 100 && GrandTotal <= 150) {
-        openWindow(Final)
         closeBunch()
+        openWindow(Final)
         EndMessage.innerHTML = "You got a score of " + GrandTotal + ". Not bad, but you can do better. Come and play another game."
     }
     else if (GrandTotal > 150 && GrandTotal < 200) {
-        openWindow(Final)
         closeBunch()
+        openWindow(Final)
         EndMessage.innerHTML = "You got a score of " + GrandTotal + "! Nice Job! Thats an average score. Improve your skills and play another game"
     }
     else if (GrandTotal >= 200 && GrandTotal < 250) {
-        openWindow(Final)
         closeBunch()
+        openWindow(Final)
         EndMessage.innerHTML = "You got a score of " + GrandTotal + "! WOW! That's an advanced score, Could you do even better in another game?"
     }
     else if (GrandTotal >= 250 && GrandTotal <300) {
-        openWindow(Final)
         closeBunch()
+        openWindow(Final)
         EndMessage.innerHTML = "You got a score of " + GrandTotal + "! WOW! That's an incredible score. It'd be pretty hard to beat that"
     }
     else if (GrandTotal >= 300) {
-        openWindow(Final)
         closeBunch()
+        openWindow(Final)
         EndMessage.innerHTML = "YOU GOT A SCORE OF " + GrandTotal + "! INCREDIBLE JOB! It's almost impossible to beat that score"
     }
 }
@@ -486,7 +519,7 @@ function Total() {
 }
 
 function BonusPoints() {
-    if (OneChekcer == true && TwoChecker == true && ThreeChecker == true && FourChecker == true && FiveChecker == true && SixChecker == true) {
+    if (OneChecker == true && TwoChecker == true && ThreeChecker == true && FourChecker == true && FiveChecker == true && SixChecker == true) {
         let Score = 0
         let Bonus = 0
         Score += Ones
@@ -553,7 +586,7 @@ Ones.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (OneChekcer == true) {
+    else if (OneChecker == true) {
         NoNo()
     }
     else {
@@ -586,7 +619,7 @@ Ones.addEventListener("click", function() {
                     openBunch()
                     closeWindow(Zero)
                     Reset()
-                    OneChekcer = true
+                    OneChecker = true
                     Ones = Score
                     OneScore.innerHTML = Score
                     clearDice()
@@ -597,7 +630,7 @@ Ones.addEventListener("click", function() {
         else {
             Reset()
             OneScore.innerHTML = Score
-            OneChekcer = true
+            OneChecker = true
             Ones = Score
             BonusPoints()
         }
@@ -1151,4 +1184,52 @@ Yahtzee.addEventListener("click", function() {
             })
         }
     }
+})
+
+NewGame.addEventListener("click", function() {
+    closeBunch()
+    openWindow(New)
+})
+
+DenyNew.addEventListener("click", function() {
+    closeWindow(New)
+    openBunch()
+})
+
+ConfirmNew.addEventListener("click", function() {
+    closeWindow(New)
+    openBunch()
+    Reset()
+    OneChecker = false
+    TwoChecker = false
+    ThreeChecker = false
+    FourChecker = false
+    FiveChecker = false
+    SixChecker = false
+    ThreeKindChecker = false
+    FourKindChecker = false
+    ShortStraightChecker = false
+    LongStraightChecker = false
+    FullHouseChecker = false
+    ChanceChecker = false
+    YahtzeeChecker = false
+    UpperScoreChecker = false
+    LowerScoreChecker = false
+    OneScore.innerHTML = ""
+    TwoScore.innerHTML = ""
+    ThreeScore.innerHTML = ""
+    FourScore.innerHTML = ""
+    FiveScore.innerHTML = ""
+    SixScore.innerHTML = ""
+    ThreeKindScore.innerHTML = ""
+    FourKindScore.innerHTML = ""
+    ShortStraightScore.innerHTML = ""
+    LongStraightScore.innerHTML = ""
+    FullHouseScore.innerHTML = ""
+    ChanceScore.innerHTML = ""
+    YahtzeeScore.innerHTML = ""
+    UpScore.innerHTML = ""
+    LowScore.innerHTML = ""
+    BonusScore.innerHTML = ""
+    GrandTotalScore.innerHTML = ""
 })

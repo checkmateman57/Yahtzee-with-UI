@@ -31,7 +31,20 @@
                  <b>Rules:</b> <br>
                  -You get 3 rolls per turn, and can lock the die's value by clicking on the die. <br>
                  -You must choose a section to get scored in each turn, even if it results in a 0 <br> <br>
-                 <b>Scoring:</b> <br>
+            </p>
+            <div style="display: flex; flex-direction: row; width: 100%; margin-top: 0px; margin-bottom: 0px; padding-top: 0;">
+              <p id="RulesClose" style="color: rgb(48 48 48 / 1); cursor: pointer; font-size: 32px; text-align: center; width: 50%; right: 50%; bottom: 0px;"><b>Close</b></p>
+              <p id="ScoringOpen" style="color: rgb(48 48 48 / 1); cursor: pointer; font-size: 32px; text-align: center; width: 50%; left: 50%; bottom: 0px;"><b>Next</b></p>
+            </div>
+        </div>
+
+        <div id="Scoring" style="background-color: antiquewhite; width: 640px; height: 480px; position: absolute;
+        top: 200px; left: 640px; border-radius: 16px; overflow: hidden; overflow-y: scroll; display: none;">
+            <p style="color: rgb(48 48 48 / 1); font-size: 64px; text-align: center; margin-top: 8px; margin-bottom: 8px;">
+                <b>Welcome to Yahtzee!</b>
+            </p>
+            <p style="color: rgb(48 48 48 / 1); font-size: 32px; margin-left: 8px;">
+                <b>Scoring:</b> <br>
                  -There are 2 sections: an upper section and a lower section. <br>
                  -The upper section consists of 1s, 2s, 3s, 4s, 5s, 6s, and is how many dice of that value you have added together. <br>
                  (Ex. If you have 3 6s, thats 18 points.) <br>
@@ -44,8 +57,12 @@
                  -Yahtzee is when all 5 of your dice are the same value (50 points)<br> <br>
                  -The goal is to get the highest amount of points. Have Fun! <br>
             </p>
-            <p id="RulesClose" style="color: rgb(48 48 48 / 1); cursor: pointer; font-size: 32px; text-align: center;"><b>Close</b></p>
+            <div style="display: flex; flex-direction: row; width: 100%; margin-top: 0px; margin-bottom: 0px; padding-top: 0;">
+                <p id="RulesOpen" style="color: rgb(48 48 48 / 1); cursor: pointer; font-size: 32px; text-align: center; width: 50%; right: 50%; bottom: 0px;"><b>Back</b></p>
+                <p id="ScoringClose" style="color: rgb(48 48 48 / 1); cursor: pointer; font-size: 32px; text-align: center; width: 50%; left: 50%; bottom: 0px;"><b>Close</b></p>
+            </div>
         </div>
+            
 
         <div id="DICE1" class="dice dice1" style="position: absolute; right: 580px; top: 256px; display: none;">
         </div>
@@ -268,6 +285,14 @@
             <p style="font-size: 32px; margin-top: 16px;" id="EndMessage"></p>
             <p id="FinalClose" style="font-size: 64px; cursor: pointer;">Close</p>
         </div>
+
+        <div id="New" style="background-color: antiquewhite; width: 512px; height: 350px; position: absolute;
+        left: 700px; top: 184px; text-align: center; display: none; border-radius: 16px; overflow: hidden;">
+            <p style="font-size: 32px;">Starting a new game means you will <b>lose all progress</b> and <b>restart from 0</b> <br>
+            Do you wish to proceed?</p>
+            <p id="DenyNew" style="font-size: 64px; width: 50%; position: absolute; right: 50%; cursor: pointer;"><b>No</b></p>
+            <p id="ConfirmNew" style="font-size: 64px; width: 50%; position: absolute; left: 50%; cursor: pointer;"><b>Yes</b></p>
+        </div>   
         
 
 </body>
