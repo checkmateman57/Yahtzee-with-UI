@@ -69,6 +69,25 @@ var YahtzeeScore = document.querySelector("#YahtzeeScore")
 var LowScore = document.querySelector("#LowScore")
 var GrandTotalScore = document.querySelector("#GrandScore")
 
+var OneScore2 = document.querySelector("#OneScore2")
+var TwoScore2 = document.querySelector("#TwoScore2")
+var ThreeScore2 = document.querySelector("#ThreeScore2")
+var FourScore2 = document.querySelector("#FourScore2")
+var FiveScore2 = document.querySelector("#FiveScore2")
+var SixScore2 = document.querySelector("#SixScore2")
+var UpperScore2 = document.querySelector("#UpperScore2")
+var BonusScore2 = document.querySelector("#BonusScore2")
+var ThreeKindScore2 = document.querySelector("#ThreeKindScore2")
+var FourKindScore2 = document.querySelector("#FourKindScore2")
+var ShortStraightScore2 = document.querySelector("#ShortStraightScore2")
+var LongStraightScore2 = document.querySelector("#LongStraightScore2")
+var FullHouseScore2 = document.querySelector("#FullHouseScore2")
+var ChanceScore2 = document.querySelector("#ChanceScore2")
+var YahtzeeScore2 = document.querySelector("#YahtzeeScore2")
+var LowerScore2 = document.querySelector("#LowerScore2")
+var GrandTotalScore2 = document.querySelector("#GrandScore2")
+let Turn = 1
+
 var Zero = document.querySelector("#Zero")
 var ZeroNo = document.querySelector("#ZeroNo")
 var ZeroYes = document.querySelector("#ZeroYes")
@@ -89,6 +108,22 @@ let FourKindChecker = false
 let FullHouseChecker = false
 let UpperScoreChecker = false
 let LowerScoreChecker = false
+
+let OneChecker2 = false
+let TwoChecker2 = false
+let ThreeChecker2 = false
+let FourChecker2 = false
+let FiveChecker2 = false
+let SixChecker2 = false
+let ChanceChecker2 = false
+let YahtzeeChecker2 = false
+let LongStraightChecker2 = false
+let ShortStraightChecker2 = false
+let ThreeKindChecker2 = false
+let FourKindChecker2 = false
+let FullHouseChecker2 = false
+let UpperScoreChecker2 = false
+let LowerScoreChecker2 = false
 
 let RollResult1 = 0;
 let RollResult2 = 0;
@@ -634,7 +669,10 @@ Ones.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (OneChecker == true) {
+    else if (
+        (Mode == 1 && OneChecker == true)||
+        (Mode == 2 && Turn == 1 && OneChecker == true)||
+        (Mode == 2 && Turn == 2 && OneChecker2 == true)) {
         NoNo()
     }
     else {
@@ -667,20 +705,41 @@ Ones.addEventListener("click", function() {
                     openBunch()
                     closeWindow(Zero)
                     Reset()
-                    OneChecker = true
-                    Ones = Score
-                    OneScore.innerHTML = Score
-                    clearDice()
-                    BonusPoints()
+                    if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                        OneChecker = true
+                        Ones = Score
+                        OneScore.innerHTML = Score
+                        BonusPoints()
+                        if (Mode == 2) {
+                            Turn = 2
+                        }
+                    }
+                    else {
+                        OneScore2.innerHTML = Score
+                        OneScore2 = Score
+                        OneChecker2 = true
+                        Turn = 1
+                    }
                 }
             })
         }
         else {
             Reset()
-            OneScore.innerHTML = Score
-            OneChecker = true
-            Ones = Score
-            BonusPoints()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                OneScore.innerHTML = Score
+                OneChecker = true
+                Ones = Score
+                BonusPoints()
+                if (Mode == 2) {
+                    Turn = 2
+                }
+            }
+            else {
+                OneScore2.innerHTML = Score
+                OneScore2 = Score
+                OneChecker2 = true
+                Turn = 1
+            }
         }
     }
 })
