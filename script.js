@@ -31,6 +31,7 @@ var RollWarning = document.querySelector("#RollWarning")
 var RollWarningClose = document.querySelector("#RollWarningClose")
 
 var ScoringTable = document.querySelector("#ScoringTable")
+var Header = document.querySelector("#Header")
 var Ones = document.querySelector("#Ones")
 var Twos = document.querySelector("#Twos")
 var Threes = document.querySelector("#Threes")
@@ -109,6 +110,16 @@ var New = document.querySelector("#New")
 var ConfirmNew = document.querySelector("#ConfirmNew")
 var DenyNew = document.querySelector("#DenyNew")
 
+let Mode = 1
+
+var Single = document.querySelector("#Single")
+var SingleCircle = document.querySelector("#SingleCircle")
+var Multi = document.querySelector("#Multi")
+var MultiCircle = document.querySelector("#MultiCircle")
+
+var ScoringTable2 = document.querySelector("#ScoringTable2")
+
+
 
 function closeWindow(element) {
     element.style.display = "none"
@@ -141,6 +152,14 @@ function openBunch() {
     if (Die5Lock == true) {
         openWindow(Lock5)
     }
+    if (Mode == 1) {
+        SingleAdd()
+    }
+    if (Mode == 2) {
+        MultiAdd()
+    }
+    openWindow(Single)
+    openWindow(Multi)
 }
 
 function closeBunch() {
@@ -161,12 +180,41 @@ function closeBunch() {
     closeWindow(Invalid)
     closeWindow(Zero)
     closeWindow(New)
+    closeWindow(ScoringTable2)
+    closeWindow(Single)
+    closeWindow(SingleCircle)
+    closeWindow(MultiCircle)
+    closeWindow(Multi)
 }
 
 function NoNo() {
     closeBunch()
     openWindow(Invalid)
 }
+
+function SingleAdd() {
+    closeWindow(MultiCircle)
+    openWindow(SingleCircle)
+    Mode = 1
+    closeWindow(ScoringTable2)
+    openWindow(Header)
+}
+
+function MultiAdd() {
+    closeWindow(SingleCircle)
+    openWindow(MultiCircle)
+    Mode = 2
+    closeWindow(Header)
+    openWindow(ScoringTable2)
+}
+
+Single.addEventListener("click", function() {
+    SingleAdd()
+})
+
+Multi.addEventListener("click", function() {
+    MultiAdd()
+})
 
 RulesClose.addEventListener("click", function() {
     closeWindow(Rules)
