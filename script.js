@@ -748,7 +748,10 @@ Twos.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (TwoChecker == true) {
+    else if (
+        (Mode == 1 && TwoChecker == true)||
+        (Mode == 2 && Turn == 1 && TwoChecker == true)||
+        (Mode == 2 && Turn == 2 && TwoChecker2 == true)) {
         NoNo()
     }
     else {
@@ -781,19 +784,42 @@ Twos.addEventListener("click", function() {
                     openBunch()
                     closeWindow(Zero)
                     Reset()
-                    Twos = Score
-                    TwoScore.innerHTML = Score
-                    TwoChecker = true
-                    BonusPoints()
+                    if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                        Twos = Score
+                        TwoScore.innerHTML = Score
+                        TwoChecker = true
+                        BonusPoints()
+                        if (Mode == 2) {
+                            Turn = 2
+                        }
+                    }
+                    else {
+                        TwoScore2.innerHTML = Score
+                        TwoScore2 = Score
+                        TwoChecker2 = true
+                        Turn = 1 
+                    }
+
                 }
             })
         }
         else {
             Reset()
-            Twos = Score
-            TwoScore.innerHTML = Score
-            TwoChecker = true
-            BonusPoints()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                Twos = Score
+                TwoScore.innerHTML = Score
+                TwoChecker = true
+                BonusPoints()
+                if (Mode == 2) {
+                    Turn = 2
+                }
+            }
+            else {
+                TwoScore2.innerHTML = Score
+                TwoScore2 = Score
+                TwoChecker2 = true
+                Turn = 1 
+            }
         }
     }
 })
@@ -802,7 +828,10 @@ Threes.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (ThreeChecker == true) {
+    else if (
+        (Mode == 1 && ThreeChecker == true)||
+        (Mode == 2 && Turn == 1 && ThreeChecker == true)||
+        (Mode == 2 && Turn == 2 && ThreeChecker2 == true)) {
         NoNo()
     }
     else {
@@ -835,19 +864,41 @@ Threes.addEventListener("click", function() {
                     openBunch()
                     closeWindow(Zero)
                     Reset()
-                    Threes = Score
-                    ThreeScore.innerHTML = Score
-                    ThreeChecker = true
-                    BonusPoints()
+                    if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                        Threes = Score
+                        ThreeScore.innerHTML = Score
+                        ThreeChecker = true
+                        BonusPoints()
+                        if (Mode == 2){
+                            Turn = 2
+                        }
+                    }
+                    else {
+                        ThreeScore2.innerHTML = Score
+                        ThreeScore2 = Score
+                        ThreeChecker2 = true
+                        Turn = 1 
+                    }
                 }
             })
         }
         else {
             Reset()
-            Threes = Score
-            ThreeScore.innerHTML = Score
-            ThreeChecker = true
-            BonusPoints()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                Threes = Score
+                ThreeScore.innerHTML = Score
+                ThreeChecker = true
+                BonusPoints()
+                if (Mode == 2){
+                    Turn = 2
+                }
+            }
+            else {
+                ThreeScore2.innerHTML = Score
+                ThreeScore2 = Score
+                ThreeChecker2 = true
+                Turn = 1 
+            }
         }
     }
 })
@@ -856,7 +907,10 @@ Fours.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (FourChecker == true) {
+    else if (
+        (Mode == 1 && FourChecker == true)||
+        (Mode == 2 && Turn == 1 && FourChecker == true)||
+        (Mode == 2 && Turn == 2 && FourChecker2 == true)) {
         NoNo()
     }
     else {
@@ -889,19 +943,41 @@ Fours.addEventListener("click", function() {
                     openBunch()
                     closeWindow(Zero)
                     Reset()
-                    Fours = Score
-                    FourScore.innerHTML = Score
-                    FourChecker = true
-                    BonusPoints()
+                    if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                        Fours = Score
+                        FourScore.innerHTML = Score
+                        FourChecker = true
+                        BonusPoints()
+                        if (Mode == 2){
+                            Turn = 2
+                        }
+                    }
+                    else {
+                        FourScore2.innerHTML = Score
+                        FourScore2 = Score
+                        FourChecker2 = true
+                        Turn = 1 
+                    }
                 }
             })
         }
         else {
             Reset()
-            Fours = Score
-            FourScore.innerHTML = Score
-            FourChecker = true
-            BonusPoints()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                Fours = Score
+                FourScore.innerHTML = Score
+                FourChecker = true
+                BonusPoints()
+                if (Mode == 2){
+                    Turn = 2
+                }
+            }
+            else {
+                FourScore2.innerHTML = Score
+                FourScore2 = Score
+                FourChecker2 = true
+                Turn = 1 
+            }
         }
     }
 })
@@ -910,7 +986,10 @@ Fives.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (FiveChecker == true) {
+    else if (
+        (Mode == 1 && FiveChecker == true)||
+        (Mode == 2 && Turn == 1 && FiveChecker == true)||
+        (Mode == 2 && Turn == 2 && FiveChecker2 == true)) {
         NoNo()
     }
     else {
@@ -943,19 +1022,41 @@ Fives.addEventListener("click", function() {
                     openBunch()
                     closeWindow(Zero)
                     Reset()
-                    Fives = Score
-                    FiveScore.innerHTML = Score
-                    FiveChecker = true
-                    BonusPoints()
+                    if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                        Fives = Score
+                        FiveScore.innerHTML = Score
+                        FiveChecker = true
+                        BonusPoints()
+                        if (Mode == 2){
+                            Turn = 2
+                        }
+                    }
+                    else {
+                        FiveScore2.innerHTML = Score
+                        FiveScore2 = Score
+                        FiveChecker2 = true
+                        Turn = 1 
+                    }
                 }
             })
         }
         else {
             Reset()
-            Fives = Score
-            FiveScore.innerHTML = Score
-            FiveChecker = true
-            BonusPoints()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                Fives = Score
+                FiveScore.innerHTML = Score
+                FiveChecker = true
+                BonusPoints()
+                if (Mode == 2){
+                    Turn = 2
+                }
+            }
+            else {
+                FiveScore2.innerHTML = Score
+                FiveScore2 = Score
+                FiveChecker2 = true
+                Turn = 1 
+            }
         }
     }
 })
@@ -997,19 +1098,41 @@ Sixes.addEventListener("click", function() {
                     closeWindow(Zero)
                     openBunch()
                     Reset()
-                    Sixes = Score
-                    SixScore.innerHTML = Score
-                    SixChecker = true
-                    BonusPoints()
+                    if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                        Sixes = Score
+                        SixScore.innerHTML = Score
+                        SixChecker = true
+                        BonusPoints()
+                        if (Mode == 2){
+                            Turn = 2
+                        }
+                    }
+                    else {
+                        SixScore2.innerHTML = Score
+                        SixScore2 = Score
+                        SixChecker2 = true
+                        Turn = 1 
+                    }
                 }
             })
         }
         else {
             Reset()
-            Sixes = Score
-            SixScore.innerHTML = Score
-            SixChecker = true
-            BonusPoints()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                Sixes = Score
+                SixScore.innerHTML = Score
+                SixChecker = true
+                BonusPoints()
+                if (Mode == 2){
+                    Turn = 2
+                }
+            }
+            else {
+                SixScore2.innerHTML = Score
+                SixScore2 = Score
+                SixChecker2 = true
+                Turn = 1 
+            }
         }
     }
 })
