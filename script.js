@@ -629,6 +629,31 @@ function BonusPoints() {
     }
 }
 
+function BonusPoints2() {
+    if (OneChecker2 == true && TwoChecker2 == true && ThreeChecker2 == true && FourChecker2 == true && FiveChecker2 == true && SixChecker2 == true) {
+    let Score = 0
+    Score += OneScore2
+    Score += TwoScore2
+    Score += ThreeScore2
+    Score += FourScore2
+    Score += FiveScore2
+    Score += SixScore2
+    UpperScore2.innerHTML = Score
+    UpperScore2 = Score
+    if (Score >= 63) {
+        Score = 35
+        BonusScore2.innerHTML = Score
+        BonusScore2 = Score
+    }
+    if (Score < 63) {
+        Score = 0
+        BonusScore2.innerHTML = Score
+        BonusScore2 = Score
+    }
+    
+    }
+}
+
 function BottomScore() {
     if (ThreeKindChecker == true && FourKindChecker == true && ShortStraightChecker == true && LongStraightChecker == true && FullHouseChecker == true && ChanceChecker == true && YahtzeeChecker == true) {
         Score = 0
@@ -719,6 +744,7 @@ Ones.addEventListener("click", function() {
                         OneScore2 = Score
                         OneChecker2 = true
                         Turn = 1
+                        BonusPoints2()
                     }
                 }
             })
@@ -739,6 +765,7 @@ Ones.addEventListener("click", function() {
                 OneScore2 = Score
                 OneChecker2 = true
                 Turn = 1
+                BonusPoints2()
             }
         }
     }
@@ -798,6 +825,7 @@ Twos.addEventListener("click", function() {
                         TwoScore2 = Score
                         TwoChecker2 = true
                         Turn = 1 
+                        BonusPoints2()
                     }
 
                 }
@@ -819,6 +847,7 @@ Twos.addEventListener("click", function() {
                 TwoScore2 = Score
                 TwoChecker2 = true
                 Turn = 1 
+                BonusPoints2()
             }
         }
     }
@@ -878,6 +907,7 @@ Threes.addEventListener("click", function() {
                         ThreeScore2 = Score
                         ThreeChecker2 = true
                         Turn = 1 
+                        BonusPoints2()
                     }
                 }
             })
@@ -898,6 +928,7 @@ Threes.addEventListener("click", function() {
                 ThreeScore2 = Score
                 ThreeChecker2 = true
                 Turn = 1 
+                BonusPoints2()
             }
         }
     }
@@ -957,6 +988,7 @@ Fours.addEventListener("click", function() {
                         FourScore2 = Score
                         FourChecker2 = true
                         Turn = 1 
+                        BonusPoints2()
                     }
                 }
             })
@@ -977,6 +1009,7 @@ Fours.addEventListener("click", function() {
                 FourScore2 = Score
                 FourChecker2 = true
                 Turn = 1 
+                BonusPoints2()
             }
         }
     }
@@ -1036,6 +1069,7 @@ Fives.addEventListener("click", function() {
                         FiveScore2 = Score
                         FiveChecker2 = true
                         Turn = 1 
+                        BonusPoints2()
                     }
                 }
             })
@@ -1056,6 +1090,7 @@ Fives.addEventListener("click", function() {
                 FiveScore2 = Score
                 FiveChecker2 = true
                 Turn = 1 
+                BonusPoints2()
             }
         }
     }
@@ -1065,7 +1100,10 @@ Sixes.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (SixChecker == true) {
+    else if (
+        (Mode == 1 && SixChecker == true)||
+        (Mode == 2 && Turn == 1 && SixChecker == true)||
+        (Mode == 2 && Turn == 2 && SixChecker2 == true)) {
         NoNo()
     }
     else {
@@ -1112,6 +1150,7 @@ Sixes.addEventListener("click", function() {
                         SixScore2 = Score
                         SixChecker2 = true
                         Turn = 1 
+                        BonusPoints2()
                     }
                 }
             })
@@ -1132,6 +1171,7 @@ Sixes.addEventListener("click", function() {
                 SixScore2 = Score
                 SixChecker2 = true
                 Turn = 1 
+                BonusPoints2()
             }
         }
     }
@@ -1141,7 +1181,10 @@ ThreeKind.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (ThreeKindChecker == true) {
+    else if (
+        (Mode == 1 && ThreeKindChecker == true)||
+        (Mode == 2 && Turn == 1 && ThreeKindChecker == true)||
+        (Mode == 2 && Turn == 2 && ThreeKindChecker2 == true)) {
         NoNo()
     }
     else {
