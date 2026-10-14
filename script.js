@@ -731,12 +731,14 @@ Ones.addEventListener("click", function() {
                     closeWindow(Zero)
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        OneChecker = true
-                        Ones = Score
-                        OneScore.innerHTML = Score
-                        BonusPoints()
-                        if (Mode == 2) {
-                            Turn = 2
+                        if (OneChecker == false) {
+                            OneChecker = true
+                            Ones = Score
+                            OneScore.innerHTML = Score
+                            BonusPoints()
+                            if (Mode == 2) {
+                                Turn = 2
+                            }
                         }
                     }
                     else {
@@ -812,12 +814,14 @@ Twos.addEventListener("click", function() {
                     closeWindow(Zero)
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        Twos = Score
-                        TwoScore.innerHTML = Score
-                        TwoChecker = true
-                        BonusPoints()
-                        if (Mode == 2) {
-                            Turn = 2
+                        if (TwoChecker == false) {
+                            Twos = Score
+                            TwoScore.innerHTML = Score
+                            TwoChecker = true
+                            BonusPoints()
+                            if (Mode == 2) {
+                                Turn = 2
+                            }
                         }
                     }
                     else {
@@ -894,12 +898,14 @@ Threes.addEventListener("click", function() {
                     closeWindow(Zero)
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        Threes = Score
-                        ThreeScore.innerHTML = Score
-                        ThreeChecker = true
-                        BonusPoints()
-                        if (Mode == 2){
-                            Turn = 2
+                        if (ThreeChecker == true) {
+                            Threes = Score  
+                            ThreeScore.innerHTML = Score
+                            ThreeChecker = true
+                            BonusPoints()
+                            if (Mode == 2){
+                                Turn = 2
+                            }
                         }
                     }
                     else {
@@ -975,12 +981,14 @@ Fours.addEventListener("click", function() {
                     closeWindow(Zero)
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        Fours = Score
-                        FourScore.innerHTML = Score
-                        FourChecker = true
-                        BonusPoints()
-                        if (Mode == 2){
-                            Turn = 2
+                        if (FourChecker == true) {
+                            Fours = Score
+                            FourScore.innerHTML = Score
+                            FourChecker = true
+                            BonusPoints()
+                            if (Mode == 2){
+                                Turn = 2
+                            }
                         }
                     }
                     else {
@@ -1056,12 +1064,14 @@ Fives.addEventListener("click", function() {
                     closeWindow(Zero)
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        Fives = Score
-                        FiveScore.innerHTML = Score
-                        FiveChecker = true
-                        BonusPoints()
-                        if (Mode == 2){
-                            Turn = 2
+                        if (FiveChecker == true) {
+                            Fives = Score
+                            FiveScore.innerHTML = Score
+                            FiveChecker = true
+                            BonusPoints()
+                            if (Mode == 2){
+                                Turn = 2
+                            }
                         }
                     }
                     else {
@@ -1137,12 +1147,14 @@ Sixes.addEventListener("click", function() {
                     openBunch()
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        Sixes = Score
-                        SixScore.innerHTML = Score
-                        SixChecker = true
-                        BonusPoints()
-                        if (Mode == 2){
-                            Turn = 2
+                        if (SixChecker == true) {
+                            Sixes = Score
+                            SixScore.innerHTML = Score
+                            SixChecker = true
+                            BonusPoints()
+                            if (Mode == 2){
+                                Turn = 2
+                            }
                         }
                     }
                     else {
