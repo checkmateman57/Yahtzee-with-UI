@@ -670,6 +670,21 @@ function BottomScore() {
     }
 }
 
+function BottomScore2() {
+    if (ThreeKindChecker2 == true && FourKindChecker2 == true && ShortStraightChecker2 == true && LongStraightChecker2 == true && FullHouseChecker2 == true && ChanceChecker2 == true && YahtzeeChecker2 == true) {
+        Score = 0
+        Score += ThreeKindScore2
+        Score += FourKindScore2
+        Score += ShortStraightScore2
+        Score += LongStraightScore2
+        Score += FullHouseScore2
+        Score += ChanceScore2
+        Score += YahtzeeScore2
+        LowerScore2.innerHTML = Score
+        LowerScore2 = Score
+    }
+}
+
 function ZeroChecker() {
     closeBunch()
     openWindow(Zero)
@@ -1207,11 +1222,23 @@ ThreeKind.addEventListener("click", function() {
             (Dice[2] == Dice[3] && Dice[3] == Dice[4])
         ) {
             Score = Adding()
-            ThreeKind = Score
-            ThreeKindScore.innerHTML = Score
             Reset()
-            ThreeKindChecker = true
-            BottomScore()
+            if ((Mode == 1) || (Mode == 2 && Turn == 1)) {
+                ThreeKind = Score
+                ThreeKindScore.innerHTML = Score
+                ThreeKindChecker = true
+                BottomScore()
+                if (Mode == 2) {
+                    Turn = 2
+                }
+            }
+            else {
+                ThreeKindScore2.innerHTML = Score
+                ThreeKindScore2 = Score
+                ThreeKindChecker2 = true
+                BottomScore2()
+                Turn = 1
+            }
         }
         else {
             ZeroChecker()
@@ -1226,11 +1253,25 @@ ThreeKind.addEventListener("click", function() {
                     closeWindow(Zero)
                     openBunch()
                     Score = 0
-                    ThreeKind = Score
-                    ThreeKindScore.innerHTML = Score
                     Reset()
-                    ThreeKindChecker = true
-                    BottomScore()
+                    if ((Mode == 1) || (Mode == 2 && Turn == 1)) {
+                        if (ThreeKindChecker == false) {
+                            ThreeKind = Score
+                            ThreeKindScore.innerHTML = Score
+                            ThreeKindChecker = true
+                            BottomScore()
+                            if (Mode == 2) {
+                                Turn = 2
+                            }
+                        }
+                    }
+                    else {
+                        ThreeKindScore2.innerHTML = Score
+                        ThreeKindScore2 = Score
+                        ThreeKindChecker2 = true
+                        BottomScore2()
+                        Turn = 1
+                    }
                 }
             })
         }
@@ -1241,7 +1282,10 @@ FourKind.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (FourKindChecker == true) {
+    else if (
+        (Mode == 1 && FourKindChecker == true)||
+        (Mode == 2 && Turn == 1 && FourKindChecker == true)||
+        (Mode == 2 && Turn == 2 && FourKindChecker2 == true)) {
         NoNo()
     }
     else {
@@ -1251,11 +1295,23 @@ FourKind.addEventListener("click", function() {
             (Dice[1] == Dice[2] && Dice[2] == Dice[3] && Dice[3] == Dice[4])
         ) {
             Score = Adding()
-            FourKind = Score
-            FourKindScore.innerHTML = Score
             Reset()
-            FourKindChecker = true
-            BottomScore()
+            if ((Mode == 1) || (Mode == 2 && Turn == 1)) {
+                FourKind = Score
+                FourKindScore.innerHTML = Score
+                FourKindChecker = true
+                BottomScore()
+                if (Mode == 2) {
+                    Turn = 2
+                }
+            }
+            else {
+                FourKindScore2.innerHTML = Score
+                FourKindScore2 = Score
+                FourKindChecker2 = true
+                BottomScore2()
+                Turn = 1
+            }
         }
         else {
             ZeroChecker()
@@ -1270,11 +1326,25 @@ FourKind.addEventListener("click", function() {
                     closeWindow(Zero)
                     openBunch()
                     Score = 0
-                    FourKind = Score
-                    FourKindScore.innerHTML = Score
                     Reset()
-                    FourKindChecker = true
-                    BottomScore()
+                    if ((Mode == 1) || (Mode == 2 && Turn == 1)) {
+                        if (FourKindChecker == false) {
+                            FourKind = Score
+                            FourKindScore.innerHTML = Score
+                            FourKindChecker = true
+                            BottomScore()
+                            if (Mode == 2) {
+                                Turn = 2
+                            }
+                        }
+                    }
+                    else {
+                        FourKindScore2.innerHTML = Score
+                        FourKindScore2 = Score
+                        FourKindChecker2 = true
+                        BottomScore2()
+                        Turn = 1
+                    }
                 }
             })
         }
@@ -1285,7 +1355,10 @@ ShortStraight.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (ShortStraightChecker == true) {
+    else if (
+        (Mode == 1 && ShortStraightChecker == true)||
+        (Mode == 2 && Turn == 1 && ShortStraightChecker == true)||
+        (Mode == 2 && Turn == 2 && ShortStraightChecker2 == true)) {
         NoNo()
     }
     else {
@@ -1297,11 +1370,23 @@ ShortStraight.addEventListener("click", function() {
             (Dice[0] + 1 == Dice[1] && Dice[1] + 1 == Dice[2] && Dice[2] + 1 == Dice[4]) ){
             let Score = 0
             Score += 30
-            ShortStraight = Score
-            ShortStraightScore.innerHTML = Score
             Reset()
-            ShortStraightChecker = true
-            BottomScore()
+            if ((Mode == 1) || (Mode == 2 && Turn == 1)) {
+                ShortStraight = Score
+                ShortStraightScore.innerHTML = Score
+                ShortStraightChecker = true
+                BottomScore()
+                if (Mode == 2) {
+                    Turn = 2
+                }
+            }
+            else {
+                ShortStraightScore2.innerHTML = Score
+                ShortStraightScore2 = Score
+                ShortStraightChecker2 = true
+                BottomScore2()
+                Turn = 1
+            }
         }
         else {
           ZeroChecker()
@@ -1317,10 +1402,24 @@ ShortStraight.addEventListener("click", function() {
                     closeWindow(Zero)
                     openBunch()
                     Reset()
-                    ShortStraight = Score
-                    ShortStraightScore.innerHTML = Score
-                    ShortStraightChecker = true
-                    BottomScore()
+                    if ((Mode == 1) || (Mode == 2 && Turn == 1)) {
+                        if (ShortStraightChecker == false) {
+                            ShortStraight = Score
+                            ShortStraightScore.innerHTML = Score
+                            ShortStraightChecker = true
+                            BottomScore()
+                            if (Mode == 2) {
+                                Turn = 2
+                            }
+                        }
+                    }
+                    else {
+                        ShortStraightScore2.innerHTML = Score
+                        ShortStraightScore2 = Score
+                        ShortStraightChecker2 = true
+                        BottomScore2()
+                        Turn = 1
+                    }
                 }
             })  
         }
@@ -1331,7 +1430,10 @@ LongStraight.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (LongStraightChecker == true) {
+    else if (
+        (Mode == 1 && LongStraightChecker == true)||
+        (Mode == 2 && Turn == 1 && LongStraightChecker == true)||
+        (Mode == 2 && Turn == 2 && LongStraightChecker2 == true)) {
         NoNo()
     }
     else{
@@ -1339,11 +1441,23 @@ LongStraight.addEventListener("click", function() {
         if (Dice[0] + 1 == Dice[1] && Dice[1] + 1 == Dice[2] && Dice[2] + 1 == Dice[3] && Dice[3] + 1 == Dice[4]) {
             let Score = 0
             Score += 40
-            LongStraight = Score
-            LongStraightScore.innerHTML = Score
             Reset()
-            LongStraightChecker = true
-            BottomScore()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)){
+                LongStraight = Score
+                LongStraightScore.innerHTML = Score
+                LongStraightChecker = true
+                BottomScore()
+                if (Mode == 2){
+                    Turn = 2
+                }
+            }
+            else {
+                LongStraightScore2.innerHTML = Score
+                LongStraightScore2 = Score
+                LongStraightChecker2 = true
+                BottomScore2()
+                Turn = 1
+            }
         }
         else {
             ZeroChecker()
@@ -1359,10 +1473,24 @@ LongStraight.addEventListener("click", function() {
                     closeWindow(Zero)
                     openBunch()
                     Reset()
-                    LongStraight = Score
-                    LongStraightScore.innerHTML = Score
-                    LongStraightChecker = true
-                    BottomScore()
+                    if (LongStraightChecker == false) {
+                        if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                            LongStraight = Score
+                            LongStraightScore.innerHTML = Score
+                            LongStraightChecker = true
+                            BottomScore()
+                            if (Mode == 2) {
+                                Turn = 2
+                            }
+                        }
+                    }
+                    else {
+                        LongStraightScore2.innerHTML = Score
+                        LongStraightScore2 = Score
+                        LongStraightChecker2 = true
+                        BottomScore2()
+                        Turn = 1
+                    }
                 }
             })
         }
@@ -1373,7 +1501,10 @@ FullHouse.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (FullHouseChecker == true) {
+    else if (
+        (Mode == 1 && FullHouseChecker == true)||
+        (Mode == 2 && Turn == 1 && FullHouseChecker == true)||
+        (Mode == 2 && Turn == 2 && FullHouseChecker2 == true)) {
         NoNo()
     }
     else {
@@ -1383,11 +1514,23 @@ FullHouse.addEventListener("click", function() {
             (Dice[0] == Dice[1] && Dice[1] == Dice[2] && Dice[3] == Dice[4] && Dice[3] > Dice[2])
         ) {
             Score = 25
-            FullHouse = Score
-            FullHouseScore.innerHTML = Score
             Reset()
-            FullHouseChecker = true
-            BottomScore()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                FullHouse = Score
+                FullHouseScore.innerHTML = Score
+                FullHouseChecker = true
+                BottomScore()
+                if (Mode == 2) {
+                    Turn = 2
+                }
+            }
+            else {
+                FullHouseScore2.innerHTML = Score
+                FullHouseScore2 = Score
+                FullHouseChecker2 = true
+                BottomScore2()
+                Turn = 1
+            }
         }
         else {
             ZeroChecker()
@@ -1401,12 +1544,26 @@ FullHouse.addEventListener("click", function() {
                 if (CurrentChecker == 11) {
                     closeWindow(Zero)
                     openBunch()
-                    Score = 0
-                    FullHouse = Score
-                    FullHouseScore.innerHTML = Score
                     Reset()
-                    FullHouseChecker = true
-                    BottomScore()
+                    Score = 0
+                    if ((Mode == 1)||(Mode == 2 && Turn == 1)) {
+                        if (FullHouseChecker == false) {
+                            FullHouse = Score
+                            FullHouseScore.innerHTML = Score
+                            FullHouseChecker = true
+                            BottomScore()
+                            if (Mode == 2) {
+                                Turn = 1
+                            }
+                        }
+                    }
+                    else {
+                        FullHouseScore2.innerHTML = Score
+                        FullHouseScore2 = Score
+                        FullHouseChecker2 = true
+                        BottomScore2()
+                        Turn = 1
+                    }
                 }
             })
         }
@@ -1417,16 +1574,29 @@ Chance.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (ChanceChecker == true) {
+    else if (
+        (Mode == 1 && ChanceChecker == true) ||
+        (Mode == 2 && ChanceChecker == true && Turn == 1) ||
+        (Mode == 2 && ChanceChecker2 == true && Turn == 2)
+    ) {
         NoNo()
     }
     else {
         Score = Adding()
-        Chance = Score
-        ChanceScore.innerHTML = Score
         Reset()
-        ChanceChecker = true
-        BottomScore()
+        if ((Mode == 1) || (Mode == 2 && Turn == 1)) {
+            Chance = Score
+            ChanceScore.innerHTML = Score
+            ChanceChecker = true
+            BottomScore()
+        }
+        else {
+            ChanceScore2.innerHTML = Score
+            ChanceScore2 = Score
+            ChanceChecker2 = true
+            BottomScore2()
+            Turn = 1
+        }
     }
 })
 
@@ -1434,18 +1604,34 @@ Yahtzee.addEventListener("click", function() {
     if (RollCounter == 0) {
         NoNo()
     }
-    else if (YahtzeeChecker == true) {
+    else if (
+        (Mode == 1 && YahtzeeChecker == true)||
+        (Mode == 2 && Turn == 1 && YahtzeeChecker == true)||
+        (Mode == 2 && Turn == 2 && YahtzeeChecker2 == true)
+    ) {
         NoNo()
     }
     else {
         if (RollResult1 == RollResult2 && RollResult3 == RollResult4 && RollResult5 == RollResult1 && RollResult5 == RollResult3){
             let Score = 0
             Score += 50
-            Yahtzee = Score
-            YahtzeeScore.innerHTML = Score
             Reset()
-            YahtzeeChecker = true
-            BottomScore()
+            if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                Yahtzee = Score
+                YahtzeeScore.innerHTML = Score
+                YahtzeeChecker = true
+                BottomScore()
+                if (Mode == 2) {
+                    Turn = 2
+                }
+            }
+            else {
+                YahtzeeScore2.innerHTML = Score
+                YahtzeeScore2 = Score
+                YahtzeeChecker2 = true
+                BottomScore2()
+                Turn = 1
+            }
         }
         else {
             ZeroChecker()
@@ -1461,10 +1647,23 @@ Yahtzee.addEventListener("click", function() {
                     closeWindow(Zero)
                     openBunch()
                     Reset()
-                    Yahtzee = Score
-                    YahtzeeScore.innerHTML = Score
-                    YahtzeeChecker = true
-                    BottomScore()
+                    if (YahtzeeChecker == false)
+                        if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                            Yahtzee = Score
+                            YahtzeeScore.innerHTML = Score
+                            YahtzeeChecker = true
+                            BottomScore()
+                            if (Mode == 2) {
+                                Turn = 2
+                            }
+                    }
+                    else {
+                        YahtzeeScore2.innerHTML = Score
+                        YahtzeeScore2 = Score
+                        YahtzeeChecker2 = true
+                        BottomScore2()
+                        Turn = 1
+                    }
                 }
             })
         }
