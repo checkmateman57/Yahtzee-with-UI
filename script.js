@@ -85,7 +85,7 @@ var FullHouseScore2 = document.querySelector("#FullHouseScore2")
 var ChanceScore2 = document.querySelector("#ChanceScore2")
 var YahtzeeScore2 = document.querySelector("#YahtzeeScore2")
 var LowerScore2 = document.querySelector("#LowerScore2")
-var GrandTotalScore2 = document.querySelector("#GrandScore2")
+var GrandTotalScore2 = document.querySelector("#GrandTotalScore2")
 let Turn = 1
 
 var Zero = document.querySelector("#Zero")
@@ -154,7 +154,8 @@ var MultiCircle = document.querySelector("#MultiCircle")
 
 var ScoringTable2 = document.querySelector("#ScoringTable2")
 
-
+let GrandTotalChecker = false
+let GrandTotalChecker2 = false
 
 function closeWindow(element) {
     element.style.display = "none"
@@ -556,35 +557,54 @@ function clearDice() {
 }
 
 function Finish() {
-    if (GrandTotal < 100) {
-        closeBunch()
-        openWindow(Final)
-        EndMessage.innerHTML = "You got a score of" + GrandTotal + ". You can do better than that! Come and play another game."
+    if (Mode == 1) {
+        if (GrandTotal < 100) {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "You got a score of" + GrandTotal + ". You can do better than that! Come and play another game."
+        }
+        else if (GrandTotal >= 100 && GrandTotal <= 150) {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "You got a score of " + GrandTotal + ". Not bad, but you can do better. Come and play another game."
+        }
+        else if (GrandTotal > 150 && GrandTotal < 200) {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "You got a score of " + GrandTotal + "! Nice Job! Thats an average score. Improve your skills and play another game"
+        }
+        else if (GrandTotal >= 200 && GrandTotal < 250) {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "You got a score of " + GrandTotal + "! WOW! That's an advanced score, Could you do even better in another game?"
+        }
+        else if (GrandTotal >= 250 && GrandTotal <300) {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "You got a score of " + GrandTotal + "! WOW! That's an incredible score. It'd be pretty hard to beat that"
+        }
+        else if (GrandTotal >= 300) {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "YOU GOT A SCORE OF " + GrandTotal + "! INCREDIBLE JOB! It's almost impossible to beat that score"
+        }
     }
-    else if (GrandTotal >= 100 && GrandTotal <= 150) {
-        closeBunch()
-        openWindow(Final)
-        EndMessage.innerHTML = "You got a score of " + GrandTotal + ". Not bad, but you can do better. Come and play another game."
-    }
-    else if (GrandTotal > 150 && GrandTotal < 200) {
-        closeBunch()
-        openWindow(Final)
-        EndMessage.innerHTML = "You got a score of " + GrandTotal + "! Nice Job! Thats an average score. Improve your skills and play another game"
-    }
-    else if (GrandTotal >= 200 && GrandTotal < 250) {
-        closeBunch()
-        openWindow(Final)
-        EndMessage.innerHTML = "You got a score of " + GrandTotal + "! WOW! That's an advanced score, Could you do even better in another game?"
-    }
-    else if (GrandTotal >= 250 && GrandTotal <300) {
-        closeBunch()
-        openWindow(Final)
-        EndMessage.innerHTML = "You got a score of " + GrandTotal + "! WOW! That's an incredible score. It'd be pretty hard to beat that"
-    }
-    else if (GrandTotal >= 300) {
-        closeBunch()
-        openWindow(Final)
-        EndMessage.innerHTML = "YOU GOT A SCORE OF " + GrandTotal + "! INCREDIBLE JOB! It's almost impossible to beat that score"
+    else if (Mode == 2 && GrandTotalChecker == true && GrandTotalChecker2 == true) {
+        if (GrandTotal > GrandTotalScore2) {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "Looks like Player 1 beat Player 2! Maybe a rematch?"
+        }
+        else if (GrandTotalScore2 > GrandTotal) {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "Looks like Player 2 beat Player 1! Would Player 1 like a redemption game?"
+        }
+        else {
+            closeBunch()
+            openWindow(Final)
+            EndMessage.innerHTML = "It's a tie! Another game to settle the victor?"
+        }
     }
 }
 
@@ -595,6 +615,25 @@ function Total() {
         Score += LowerScore
         GrandTotal = Score
         GrandTotalScore.innerHTML = Score
+        GrandTotalChecker = true
+        setTimeout(function() {
+            Finish()
+        }, 3000)
+    }
+}
+
+function Total2() {
+    if (UpperScoreChecker2 == true && LowerScoreChecker2 == true) {
+        console.log("UpperScore2 looks like:", UpperScore2);
+        console.log("LowerScore2 looks like:", LowerScore2);
+        console.log("GrandTotalScore2 looks like:", GrandTotalScore2);
+        Score = 0
+        Score += Number(UpperScore2)
+        Score += Number(LowerScore2)
+        Score += Number(BonusScore2)
+        GrandTotalScore2.innerHTML = Score
+        GrandTotalScore2 = Score
+        GrandTotalChecker2 = true
         setTimeout(function() {
             Finish()
         }, 3000)
@@ -631,26 +670,27 @@ function BonusPoints() {
 
 function BonusPoints2() {
     if (OneChecker2 == true && TwoChecker2 == true && ThreeChecker2 == true && FourChecker2 == true && FiveChecker2 == true && SixChecker2 == true) {
-    let Score = 0
-    Score += OneScore2
-    Score += TwoScore2
-    Score += ThreeScore2
-    Score += FourScore2
-    Score += FiveScore2
-    Score += SixScore2
-    UpperScore2.innerHTML = Score
-    UpperScore2 = Score
-    if (Score >= 63) {
-        Score = 35
-        BonusScore2.innerHTML = Score
-        BonusScore2 = Score
-    }
-    if (Score < 63) {
-        Score = 0
-        BonusScore2.innerHTML = Score
-        BonusScore2 = Score
-    }
-    
+        let Score = 0
+        Score += OneScore2
+        Score += TwoScore2
+        Score += ThreeScore2
+        Score += FourScore2
+        Score += FiveScore2
+        Score += SixScore2
+        UpperScore2.innerHTML = Score
+        UpperScore2 = Score
+        UpperScoreChecker2 = true
+        if (Score >= 63) {
+            Score = 35
+            BonusScore2.innerHTML = Score
+            BonusScore2 = Score
+        }
+        if (Score < 63) {
+            Score = 0
+            BonusScore2.innerHTML = Score
+            BonusScore2 = Score
+        }
+        Total2()
     }
 }
 
@@ -682,6 +722,8 @@ function BottomScore2() {
         Score += YahtzeeScore2
         LowerScore2.innerHTML = Score
         LowerScore2 = Score
+        LowerScoreChecker2 = true
+        Total2()
     }
 }
 
@@ -913,7 +955,7 @@ Threes.addEventListener("click", function() {
                     closeWindow(Zero)
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        if (ThreeChecker == true) {
+                        if (ThreeChecker == false) {
                             Threes = Score  
                             ThreeScore.innerHTML = Score
                             ThreeChecker = true
@@ -996,7 +1038,7 @@ Fours.addEventListener("click", function() {
                     closeWindow(Zero)
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        if (FourChecker == true) {
+                        if (FourChecker == false) {
                             Fours = Score
                             FourScore.innerHTML = Score
                             FourChecker = true
@@ -1079,7 +1121,7 @@ Fives.addEventListener("click", function() {
                     closeWindow(Zero)
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        if (FiveChecker == true) {
+                        if (FiveChecker == false) {
                             Fives = Score
                             FiveScore.innerHTML = Score
                             FiveChecker = true
@@ -1162,7 +1204,7 @@ Sixes.addEventListener("click", function() {
                     openBunch()
                     Reset()
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        if (SixChecker == true) {
+                        if (SixChecker == false) {
                             Sixes = Score
                             SixScore.innerHTML = Score
                             SixChecker = true
@@ -1473,8 +1515,8 @@ LongStraight.addEventListener("click", function() {
                     closeWindow(Zero)
                     openBunch()
                     Reset()
-                    if (LongStraightChecker == false) {
-                        if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                    if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                        if (LongStraightChecker == false) {
                             LongStraight = Score
                             LongStraightScore.innerHTML = Score
                             LongStraightChecker = true
@@ -1553,7 +1595,7 @@ FullHouse.addEventListener("click", function() {
                             FullHouseChecker = true
                             BottomScore()
                             if (Mode == 2) {
-                                Turn = 1
+                                Turn = 2
                             }
                         }
                     }
@@ -1589,6 +1631,9 @@ Chance.addEventListener("click", function() {
             ChanceScore.innerHTML = Score
             ChanceChecker = true
             BottomScore()
+            if (Mode == 2) {
+                Turn = 2
+            }
         }
         else {
             ChanceScore2.innerHTML = Score
@@ -1647,8 +1692,8 @@ Yahtzee.addEventListener("click", function() {
                     closeWindow(Zero)
                     openBunch()
                     Reset()
-                    if (YahtzeeChecker == false)
-                        if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                    if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
+                        if  (YahtzeeChecker == false) {
                             Yahtzee = Score
                             YahtzeeScore.innerHTML = Score
                             YahtzeeChecker = true
@@ -1656,6 +1701,7 @@ Yahtzee.addEventListener("click", function() {
                             if (Mode == 2) {
                                 Turn = 2
                             }
+                        }
                     }
                     else {
                         YahtzeeScore2.innerHTML = Score
