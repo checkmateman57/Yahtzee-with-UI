@@ -69,6 +69,24 @@ var YahtzeeScore = document.querySelector("#YahtzeeScore")
 var LowScore = document.querySelector("#LowScore")
 var GrandTotalScore = document.querySelector("#GrandScore")
 
+var Ones2 = document.querySelector("#Ones")
+var Twos2 = document.querySelector("#Twos")
+var Threes2 = document.querySelector("#Threes")
+var Fours2 = document.querySelector("#Fours")
+var Fives2 = document.querySelector("#Fives")
+var Sixes2 = document.querySelector("#Sixes")
+var UpScore2 = document.querySelector("#UpperScore")
+var Bonus2 = document.querySelector("#Bonus")
+var ThreeKind2 = document.querySelector("#ThreeKind")
+var FourKind2 = document.querySelector("#FourKind")
+var ShortStraight2 = document.querySelector("#ShortStraight")
+var LongStraight2 = document.querySelector("#LongStraight")
+var FullHouse2 = document.querySelector("#FullHouse")
+var Chance2 = document.querySelector("#Chance")
+var Yahtzee2 = document.querySelector("#Yahtzee")
+var LowScore2 = document.querySelector("#LowerScore")
+var GrandTotal2 = document.querySelector("#GrandTotal")
+
 var OneScore2 = document.querySelector("#OneScore2")
 var TwoScore2 = document.querySelector("#TwoScore2")
 var ThreeScore2 = document.querySelector("#ThreeScore2")
@@ -157,6 +175,13 @@ var ScoringTable2 = document.querySelector("#ScoringTable2")
 let GrandTotalChecker = false
 let GrandTotalChecker2 = false
 
+var ModeChange1 = document.querySelector("#ModeChange1")
+var DenyModeChange1 = document.querySelector("#DenyModeChange1")
+var ConfirmModeChange1 = document.querySelector("#ConfirmModeChange1")
+var ModeChange2 = document.querySelector("#ModeChange2")
+var DenyModeChange2 = document.querySelector("#DenyModeChange2")
+var ConfirmModeChange2 = document.querySelector("#ConfirmModeChange2")
+
 function closeWindow(element) {
     element.style.display = "none"
 }
@@ -221,6 +246,8 @@ function closeBunch() {
     closeWindow(SingleCircle)
     closeWindow(MultiCircle)
     closeWindow(Multi)
+    closeWindow(ModeChange1)
+    closeWindow(ModeChange2)
 }
 
 function NoNo() {
@@ -244,13 +271,76 @@ function MultiAdd() {
     openWindow(ScoringTable2)
 }
 
-Single.addEventListener("click", function() {
-    SingleAdd()
-})
-
-Multi.addEventListener("click", function() {
-    MultiAdd()
-})
+function Wipe() {
+    Reset()
+    OneChecker = false
+    TwoChecker = false
+    ThreeChecker = false
+    FourChecker = false
+    FiveChecker = false
+    SixChecker = false
+    ThreeKindChecker = false
+    FourKindChecker = false
+    ShortStraightChecker = false
+    LongStraightChecker = false
+    FullHouseChecker = false
+    ChanceChecker = false
+    YahtzeeChecker = false
+    UpperScoreChecker = false
+    LowerScoreChecker = false
+    GrandTotalChecker = false
+    OneScore.innerHTML = ""
+    TwoScore.innerHTML = ""
+    ThreeScore.innerHTML = ""
+    FourScore.innerHTML = ""
+    FiveScore.innerHTML = ""
+    SixScore.innerHTML = ""
+    ThreeKindScore.innerHTML = ""
+    FourKindScore.innerHTML = ""
+    ShortStraightScore.innerHTML = ""
+    LongStraightScore.innerHTML = ""
+    FullHouseScore.innerHTML = ""
+    ChanceScore.innerHTML = ""
+    YahtzeeScore.innerHTML = ""
+    UpScore.innerHTML = ""
+    LowScore.innerHTML = ""
+    BonusScore.innerHTML = ""
+    GrandTotalScore.innerHTML = ""
+    OneChecker2 = false
+    TwoChecker2 = false
+    ThreeChecker2 = false
+    FourChecker2 = false
+    FiveChecker2 = false
+    SixChecker2 = false
+    ThreeKindChecker2 = false
+    FourKindChecker2 = false
+    ShortStraightChecker2 = false
+    LongStraightChecker2 = false
+    FullHouseChecker2 = false
+    ChanceChecker2 = false
+    YahtzeeChecker2 = false
+    UpperScoreChecker2 = false
+    LowerScoreChecker2 = false
+    GrandTotalChecker2 = false
+    OneScore2.innerHTML = ""
+    TwoScore2.innerHTML = ""
+    ThreeScore2.innerHTML = ""
+    FourScore2.innerHTML = ""
+    FiveScore2.innerHTML = ""
+    SixScore2.innerHTML = ""
+    ThreeKindScore2.innerHTML = ""
+    FourKindScore2.innerHTML = ""
+    ShortStraightScore2.innerHTML = ""
+    LongStraightScore2.innerHTML = ""
+    FullHouseScore2.innerHTML = ""
+    ChanceScore2.innerHTML = ""
+    YahtzeeScore2.innerHTML = ""
+    UpperScore2.innerHTML = ""
+    LowerScore2.innerHTML = ""
+    BonusScore2.innerHTML = ""
+    GrandTotalScore2.innerHTML = ""
+    Turn = 1
+}
 
 RulesClose.addEventListener("click", function() {
     closeWindow(Rules)
@@ -561,7 +651,7 @@ function Finish() {
         if (GrandTotal < 100) {
             closeBunch()
             openWindow(Final)
-            EndMessage.innerHTML = "You got a score of" + GrandTotal + ". You can do better than that! Come and play another game."
+            EndMessage.innerHTML = "You got a score of " + GrandTotal + ". You can do better than that! Come and play another game."
         }
         else if (GrandTotal >= 100 && GrandTotal <= 150) {
             closeBunch()
@@ -590,12 +680,12 @@ function Finish() {
         }
     }
     else if (Mode == 2 && GrandTotalChecker == true && GrandTotalChecker2 == true) {
-        if (GrandTotal > GrandTotalScore2) {
+        if (GrandTotal > GrandTotal2) {
             closeBunch()
             openWindow(Final)
             EndMessage.innerHTML = "Looks like Player 1 beat Player 2! Maybe a rematch?"
         }
-        else if (GrandTotalScore2 > GrandTotal) {
+        else if (GrandTotal2 > GrandTotal) {
             closeBunch()
             openWindow(Final)
             EndMessage.innerHTML = "Looks like Player 2 beat Player 1! Would Player 1 like a redemption game?"
@@ -616,23 +706,22 @@ function Total() {
         GrandTotal = Score
         GrandTotalScore.innerHTML = Score
         GrandTotalChecker = true
-        setTimeout(function() {
-            Finish()
-        }, 3000)
+        if (Mode == 1) {
+            setTimeout(function() {
+                Finish()
+            }, 3000)
+        }
     }
 }
 
 function Total2() {
     if (UpperScoreChecker2 == true && LowerScoreChecker2 == true) {
-        console.log("UpperScore2 looks like:", UpperScore2);
-        console.log("LowerScore2 looks like:", LowerScore2);
-        console.log("GrandTotalScore2 looks like:", GrandTotalScore2);
         Score = 0
-        Score += Number(UpperScore2)
-        Score += Number(LowerScore2)
-        Score += Number(BonusScore2)
+        Score += Number(UpScore2)
+        Score += Number(LowScore2)
+        Score += Number(Bonus2)
         GrandTotalScore2.innerHTML = Score
-        GrandTotalScore2 = Score
+        GrandTotal2 = Score
         GrandTotalChecker2 = true
         setTimeout(function() {
             Finish()
@@ -671,24 +760,24 @@ function BonusPoints() {
 function BonusPoints2() {
     if (OneChecker2 == true && TwoChecker2 == true && ThreeChecker2 == true && FourChecker2 == true && FiveChecker2 == true && SixChecker2 == true) {
         let Score = 0
-        Score += OneScore2
-        Score += TwoScore2
-        Score += ThreeScore2
-        Score += FourScore2
-        Score += FiveScore2
-        Score += SixScore2
+        Score += Ones2
+        Score += Twos2
+        Score += Threes2
+        Score += Fours2
+        Score += Fives2
+        Score += Sixes2
         UpperScore2.innerHTML = Score
-        UpperScore2 = Score
+        UpScore2 = Score
         UpperScoreChecker2 = true
         if (Score >= 63) {
             Score = 35
             BonusScore2.innerHTML = Score
-            BonusScore2 = Score
+            Bonus2 = Score
         }
         if (Score < 63) {
             Score = 0
             BonusScore2.innerHTML = Score
-            BonusScore2 = Score
+            Bonus2 = Score
         }
         Total2()
     }
@@ -713,15 +802,15 @@ function BottomScore() {
 function BottomScore2() {
     if (ThreeKindChecker2 == true && FourKindChecker2 == true && ShortStraightChecker2 == true && LongStraightChecker2 == true && FullHouseChecker2 == true && ChanceChecker2 == true && YahtzeeChecker2 == true) {
         Score = 0
-        Score += ThreeKindScore2
-        Score += FourKindScore2
-        Score += ShortStraightScore2
-        Score += LongStraightScore2
-        Score += FullHouseScore2
-        Score += ChanceScore2
-        Score += YahtzeeScore2
+        Score += ThreeKind2
+        Score += FourKind2
+        Score += ShortStraight2
+        Score += LongStraight2
+        Score += FullHouse2
+        Score += Chance2
+        Score += Yahtzee2
         LowerScore2.innerHTML = Score
-        LowerScore2 = Score
+        LowScore2 = Score
         LowerScoreChecker2 = true
         Total2()
     }
@@ -801,7 +890,7 @@ Ones.addEventListener("click", function() {
                     else {
                         if (OneChecker2 == false && RollCounter > 0) {
                             OneScore2.innerHTML = Score
-                            OneScore2 = Score
+                            Ones2 = Score
                             OneChecker2 = true
                             Turn = 1
                             BonusPoints2()
@@ -824,7 +913,7 @@ Ones.addEventListener("click", function() {
             }
             else {
                 OneScore2.innerHTML = Score
-                OneScore2 = Score
+                Ones2 = Score
                 OneChecker2 = true
                 Turn = 1
                 BonusPoints2()
@@ -887,7 +976,7 @@ Twos.addEventListener("click", function() {
                     else {
                         if (TwoChecker2 == false && RollCounter > 0) {
                             TwoScore2.innerHTML = Score
-                            TwoScore2 = Score
+                            Twos2 = Score
                             TwoChecker2 = true
                             Turn = 1 
                             BonusPoints2()
@@ -911,7 +1000,7 @@ Twos.addEventListener("click", function() {
             }
             else {
                 TwoScore2.innerHTML = Score
-                TwoScore2 = Score
+                Twos2 = Score
                 TwoChecker2 = true
                 Turn = 1 
                 BonusPoints2()
@@ -974,7 +1063,7 @@ Threes.addEventListener("click", function() {
                     else {
                         if (ThreeChecker2 == false && RollCounter > 0) {
                             ThreeScore2.innerHTML = Score
-                            ThreeScore2 = Score
+                            Threes2 = Score
                             ThreeChecker2 = true
                             Turn = 1 
                             BonusPoints2()
@@ -997,7 +1086,7 @@ Threes.addEventListener("click", function() {
             }
             else {
                 ThreeScore2.innerHTML = Score
-                ThreeScore2 = Score
+                Threes2 = Score
                 ThreeChecker2 = true
                 Turn = 1 
                 BonusPoints2()
@@ -1060,7 +1149,7 @@ Fours.addEventListener("click", function() {
                     else {
                         if (FourChecker2 == false && RollCounter > 0) {
                             FourScore2.innerHTML = Score
-                            FourScore2 = Score
+                            Fours2 = Score
                             FourChecker2 = true
                             Turn = 1 
                             BonusPoints2()
@@ -1083,7 +1172,7 @@ Fours.addEventListener("click", function() {
             }
             else {
                 FourScore2.innerHTML = Score
-                FourScore2 = Score
+                Fours2 = Score
                 FourChecker2 = true
                 Turn = 1 
                 BonusPoints2()
@@ -1146,7 +1235,7 @@ Fives.addEventListener("click", function() {
                     else {
                         if (FiveChecker2 == false && RollCounter > 0) {
                             FiveScore2.innerHTML = Score
-                            FiveScore2 = Score
+                            Fives2 = Score
                             FiveChecker2 = true
                             Turn = 1 
                             BonusPoints2()
@@ -1169,7 +1258,7 @@ Fives.addEventListener("click", function() {
             }
             else {
                 FiveScore2.innerHTML = Score
-                FiveScore2 = Score
+                Fives2 = Score
                 FiveChecker2 = true
                 Turn = 1 
                 BonusPoints2()
@@ -1232,7 +1321,7 @@ Sixes.addEventListener("click", function() {
                     else {
                         if (SixChecker2 == false && RollCounter > 0) {
                             SixScore2.innerHTML = Score
-                            SixScore2 = Score
+                            Sixes2 = Score
                             SixChecker2 = true
                             Turn = 1 
                             BonusPoints2()
@@ -1255,7 +1344,7 @@ Sixes.addEventListener("click", function() {
             }
             else {
                 SixScore2.innerHTML = Score
-                SixScore2 = Score
+                Sixes2 = Score
                 SixChecker2 = true
                 Turn = 1 
                 BonusPoints2()
@@ -1294,7 +1383,7 @@ ThreeKind.addEventListener("click", function() {
             }
             else {
                 ThreeKindScore2.innerHTML = Score
-                ThreeKindScore2 = Score
+                ThreeKind2 = Score
                 ThreeKindChecker2 = true
                 BottomScore2()
                 Turn = 1
@@ -1328,7 +1417,7 @@ ThreeKind.addEventListener("click", function() {
                     else {
                         if (ThreeKindChecker2 == false && RollCounter > 0) {
                             ThreeKindScore2.innerHTML = Score
-                            ThreeKindScore2 = Score
+                            ThreeKind2 = Score
                             ThreeKindChecker2 = true
                             BottomScore2()
                             Turn = 1
@@ -1370,7 +1459,7 @@ FourKind.addEventListener("click", function() {
             }
             else {
                 FourKindScore2.innerHTML = Score
-                FourKindScore2 = Score
+                FourKind2 = Score
                 FourKindChecker2 = true
                 BottomScore2()
                 Turn = 1
@@ -1404,7 +1493,7 @@ FourKind.addEventListener("click", function() {
                     else {
                         if (FourKindChecker2 == false && RollCounter > 0) {
                             FourKindScore2.innerHTML = Score
-                            FourKindScore2 = Score
+                            FourKind2 = Score
                             FourKindChecker2 = true
                             BottomScore2()
                             Turn = 1
@@ -1448,7 +1537,7 @@ ShortStraight.addEventListener("click", function() {
             }
             else {
                 ShortStraightScore2.innerHTML = Score
-                ShortStraightScore2 = Score
+                ShortStraight2 = Score
                 ShortStraightChecker2 = true
                 BottomScore2()
                 Turn = 1
@@ -1482,7 +1571,7 @@ ShortStraight.addEventListener("click", function() {
                     else {
                         if (ShortStraightChecker2 == false && RollCounter > 0) {
                             ShortStraightScore2.innerHTML = Score
-                            ShortStraightScore2 = Score
+                            ShortStraight2 = Score
                             ShortStraightChecker2 = true
                             BottomScore2()
                             Turn = 1 
@@ -1522,7 +1611,7 @@ LongStraight.addEventListener("click", function() {
             }
             else {
                 LongStraightScore2.innerHTML = Score
-                LongStraightScore2 = Score
+                LongStraight2 = Score
                 LongStraightChecker2 = true
                 BottomScore2()
                 Turn = 1
@@ -1556,7 +1645,7 @@ LongStraight.addEventListener("click", function() {
                     else {
                         if (LongStraightChecker2 == false && RollCounter > 0) {
                             LongStraightScore2.innerHTML = Score
-                            LongStraightScore2 = Score
+                            LongStraight2 = Score
                             LongStraightChecker2 = true
                             BottomScore2()
                             Turn = 1
@@ -1598,7 +1687,7 @@ FullHouse.addEventListener("click", function() {
             }
             else {
                 FullHouseScore2.innerHTML = Score
-                FullHouseScore2 = Score
+                FullHouse2 = Score
                 FullHouseChecker2 = true
                 BottomScore2()
                 Turn = 1
@@ -1632,7 +1721,7 @@ FullHouse.addEventListener("click", function() {
                     else {
                         if (FullHouseChecker2 == false && RollCounter > 0) {
                             FullHouseScore2.innerHTML = Score
-                            FullHouseScore2 = Score
+                            FullHouse2 = Score
                             FullHouseChecker2 = true
                             BottomScore2()
                             Turn = 1
@@ -1670,7 +1759,7 @@ Chance.addEventListener("click", function() {
         }
         else {
             ChanceScore2.innerHTML = Score
-            ChanceScore2 = Score
+            Chance2 = Score
             ChanceChecker2 = true
             BottomScore2()
             Turn = 1
@@ -1705,7 +1794,7 @@ Yahtzee.addEventListener("click", function() {
             }
             else {
                 YahtzeeScore2.innerHTML = Score
-                YahtzeeScore2 = Score
+                Yahtzee2 = Score
                 YahtzeeChecker2 = true
                 BottomScore2()
                 Turn = 1
@@ -1739,7 +1828,7 @@ Yahtzee.addEventListener("click", function() {
                     else {
                         if (YahtzeeChecker2 == false && RollCounter > 0) {
                             YahtzeeScore2.innerHTML = Score
-                            YahtzeeScore2 = Score
+                            Yahtzee2 = Score
                             YahtzeeChecker2 = true
                             BottomScore2()
                             Reset()
@@ -1762,40 +1851,44 @@ DenyNew.addEventListener("click", function() {
     openBunch()
 })
 
+
 ConfirmNew.addEventListener("click", function() {
     closeWindow(New)
     openBunch()
-    Reset()
-    OneChecker = false
-    TwoChecker = false
-    ThreeChecker = false
-    FourChecker = false
-    FiveChecker = false
-    SixChecker = false
-    ThreeKindChecker = false
-    FourKindChecker = false
-    ShortStraightChecker = false
-    LongStraightChecker = false
-    FullHouseChecker = false
-    ChanceChecker = false
-    YahtzeeChecker = false
-    UpperScoreChecker = false
-    LowerScoreChecker = false
-    OneScore.innerHTML = ""
-    TwoScore.innerHTML = ""
-    ThreeScore.innerHTML = ""
-    FourScore.innerHTML = ""
-    FiveScore.innerHTML = ""
-    SixScore.innerHTML = ""
-    ThreeKindScore.innerHTML = ""
-    FourKindScore.innerHTML = ""
-    ShortStraightScore.innerHTML = ""
-    LongStraightScore.innerHTML = ""
-    FullHouseScore.innerHTML = ""
-    ChanceScore.innerHTML = ""
-    YahtzeeScore.innerHTML = ""
-    UpScore.innerHTML = ""
-    LowScore.innerHTML = ""
-    BonusScore.innerHTML = ""
-    GrandTotalScore.innerHTML = ""
+    Wipe()
+})
+
+Single.addEventListener("click", function() {
+    if (Mode == 2) {
+        closeBunch()
+        openWindow(ModeChange1)
+        DenyModeChange1.addEventListener("click", function() {
+            closeWindow(ModeChange1)
+            openBunch()
+        })
+        ConfirmModeChange1.addEventListener("click", function() {
+            Mode = 1
+            closeWindow(ModeChange1)
+            openBunch()
+            Wipe()
+        })
+    }
+})
+
+Multi.addEventListener("click", function() {
+    if (Mode == 1) {
+        closeBunch()
+        openWindow(ModeChange2)
+        DenyModeChange2.addEventListener("click", function() {
+            closeWindow(ModeChange2)
+            openBunch()
+            SingleAdd()
+        })
+        ConfirmModeChange2.addEventListener("click", function() {
+            Mode = 2
+            closeWindow(ModeChange2)
+            openBunch()
+            Wipe()
+        })
+    }
 })
