@@ -873,7 +873,7 @@ Twos.addEventListener("click", function() {
                     openBunch()
                     closeWindow(Zero)
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        if (TwoChecker == false) {
+                        if (TwoChecker == false && RollCounter > 0) {
                             Twos = Score
                             TwoScore.innerHTML = Score
                             TwoChecker = true
@@ -960,7 +960,7 @@ Threes.addEventListener("click", function() {
                     openBunch()
                     closeWindow(Zero)
                     if ((Mode == 1)|| (Mode == 2 && Turn == 1)) {
-                        if (ThreeChecker == false) {
+                        if (ThreeChecker == false && RollCounter > 0) {
                             Threes = Score  
                             ThreeScore.innerHTML = Score
                             ThreeChecker = true
@@ -1630,7 +1630,7 @@ FullHouse.addEventListener("click", function() {
                         }
                     }
                     else {
-                        if (YahtzeeChecker2 == false && RollCounter > 0) {
+                        if (FullHouseChecker2 == false && RollCounter > 0) {
                             FullHouseScore2.innerHTML = Score
                             FullHouseScore2 = Score
                             FullHouseChecker2 = true
