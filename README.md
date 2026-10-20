@@ -1,4 +1,6 @@
 # Yahtzee-with-UI 🎲
+<img width="1920" height="917" alt="image" src="https://github.com/user-attachments/assets/5c0198b0-e582-491e-9c68-0aa00c3abcf4" />
+
 
 A few months ago, I created Yahtzee in the terminal using Python, which can be found here: https://github.com/checkmateman57/Yahtzee <br>
 A lot of the comments suggested that I make a UI out of this project, so I did! 😎
