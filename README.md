@@ -4,6 +4,7 @@
 
 A few months ago, I created Yahtzee in the terminal using Python, which can be found here: https://github.com/checkmateman57/Yahtzee <br>
 A lot of the comments suggested that I make a UI out of this project, so I did! 😎
+<b> Please note that this will probably work best in a screen resolution of 1920x1080p (1k, or HD, or just 1080p or whatever you want to call it), as that's what I've been basing this entire thing off of. If you have 2k or 4k, or are on mobile, it might be weird for you. Sorry if this is an inconvenience. </b>
 
 ## Overview 
 My website has very minimal functions, in terms of what you can click, so heres the rundown: <br>
